@@ -1,5 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+const Counter = ({ target, duration, suffix = '' }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const end = parseInt(target);
+    const incrementTime = Math.floor(duration / end);
+
+    const timer = setInterval(() => {
+      start += 1;
+      setCount(start);
+      if (start === end) clearInterval(timer);
+    }, incrementTime);
+
+    return () => clearInterval(timer);
+  }, [target, duration]);
+
+  return (
+    <span>
+      {count}
+      {suffix}
+    </span>
+  );
+};
 
 const About = () => {
   return (
@@ -11,22 +36,24 @@ const About = () => {
 
       <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '4rem', flexWrap: 'wrap', gap: '2rem' }}>
         {[
-          { label: '500+', description: 'Pets Adopted' },
-          { label: '10+', description: 'Years of Service' },
-          { label: '450+', description: 'Happy Families' },
-          { label: '95%', description: 'Success Rate' }
+          { number: 500, suffix: '+', description: 'Pets Adopted' },
+          { number: 10, suffix: '+', description: 'Years of Service' },
+          { number: 450, suffix: '+', description: 'Happy Families' },
+          { number: 95, suffix: '%', description: 'Success Rate' }
         ].map((item, idx) => (
-          <div key={idx} style={{ 
-            textAlign: 'center', 
-            flex: '1 1 150px', 
-            backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-            padding: '1.5rem', 
-            borderRadius: '0.75rem', 
+          <div key={idx} style={{
+            textAlign: 'center',
+            flex: '1 1 150px',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            padding: '1.5rem',
+            borderRadius: '0.75rem',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
             backdropFilter: 'blur(10px)',
             border: '1px solid rgba(255, 255, 255, 0.2)'
           }}>
-            <div style={{ fontSize: '2.5rem', fontWeight: '700', color: '#6c63ff', marginBottom: '0.5rem' }}>{item.label}</div>
+            <div style={{ fontSize: '2.5rem', fontWeight: '700', color: '#6c63ff', marginBottom: '0.5rem' }}>
+              <Counter target={item.number} duration={1500} suffix={item.suffix} />
+            </div>
             <div style={{ fontSize: '1.1rem', color: '#2d3436' }}>{item.description}</div>
           </div>
         ))}
@@ -34,46 +61,40 @@ const About = () => {
 
       <h2 style={{ fontSize: '2.5rem', color: 'white', marginBottom: '2rem', textAlign: 'center' }}>Our Team</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem', marginBottom: '4rem' }}>
-        <div style={{ 
-          backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-          padding: '2rem', 
-          borderRadius: '0.75rem', 
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)'
-        }}>
-          <h3 style={{ fontWeight: '700', fontSize: '1.5rem', marginBottom: '0.5rem', color: '#4b47d6' }}>Dr. Sarah Johnson</h3>
-          <p style={{ fontStyle: 'italic', marginBottom: '1rem', color: '#6c63ff' }}>Head Veterinarian</p>
-          <p style={{ color: '#2d3436' }}>20+ years experience in animal care and welfare</p>
-        </div>
-        <div style={{ 
-          backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-          padding: '2rem', 
-          borderRadius: '0.75rem', 
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)'
-        }}>
-          <h3 style={{ fontWeight: '700', fontSize: '1.5rem', marginBottom: '0.5rem', color: '#4b47d6' }}>Mike Thompson</h3>
-          <p style={{ fontStyle: 'italic', marginBottom: '1rem', color: '#6c63ff' }}>Adoption Coordinator</p>
-          <p style={{ color: '#2d3436' }}>Dedicated to matching pets with their perfect families</p>
-        </div>
-        <div style={{ 
-          backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-          padding: '2rem', 
-          borderRadius: '0.75rem', 
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)'
-        }}>
-          <h3 style={{ fontWeight: '700', fontSize: '1.5rem', marginBottom: '0.5rem', color: '#4b47d6' }}>Lisa Chen</h3>
-          <p style={{ fontStyle: 'italic', marginBottom: '1rem', color: '#6c63ff' }}>Animal Behaviorist</p>
-          <p style={{ color: '#2d3436' }}>Expert in pet behavior and training</p>
-        </div>
+        {[
+          {
+            name: 'Dr. Sarah Johnson',
+            role: 'Head Veterinarian',
+            info: '20+ years experience in animal care and welfare'
+          },
+          {
+            name: 'Mike Thompson',
+            role: 'Adoption Coordinator',
+            info: 'Dedicated to matching pets with their perfect families'
+          },
+          {
+            name: 'Lisa Chen',
+            role: 'Animal Behaviorist',
+            info: 'Expert in pet behavior and training'
+          }
+        ].map((member, index) => (
+          <div key={index} style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            padding: '2rem',
+            borderRadius: '0.75rem',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }}>
+            <h3 style={{ fontWeight: '700', fontSize: '1.5rem', marginBottom: '0.5rem', color: '#4b47d6' }}>{member.name}</h3>
+            <p style={{ fontStyle: 'italic', marginBottom: '1rem', color: '#6c63ff' }}>{member.role}</p>
+            <p style={{ color: '#2d3436' }}>{member.info}</p>
+          </div>
+        ))}
       </div>
 
       <h2 style={{ fontSize: '2.5rem', color: 'white', marginBottom: '2rem', textAlign: 'center' }}>Our Adoption Process</h2>
-      <div style={{ 
+      <div style={{
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
         padding: '2rem',
@@ -123,7 +144,7 @@ const About = () => {
           Ready to Start Your Adoption Journey? Browse our available pets and find your perfect companion today.
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link to="/pets" className="btn btn-primary" style={{ 
+          <Link to="/pets" className="btn btn-primary" style={{
             backgroundColor: '#6c63ff',
             color: 'white',
             padding: '0.75rem 1.5rem',
@@ -134,7 +155,7 @@ const About = () => {
           }}>
             View Available Pets
           </Link>
-          <Link to="/adoption" className="btn btn-secondary" style={{ 
+          <Link to="/adoption" className="btn btn-secondary" style={{
             backgroundColor: 'transparent',
             border: '2px solid #6c63ff',
             color: '#6c63ff',
