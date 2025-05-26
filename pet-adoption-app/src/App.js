@@ -4,7 +4,7 @@ import Navbar from './components/layout/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
-import Pets from './pages/Pets';
+import { Pets } from './pages/Pets';
 import PetDetails from './pages/PetDetails';
 import Adoption from './pages/Adoption';
 
