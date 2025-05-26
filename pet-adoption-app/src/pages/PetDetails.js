@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { usePetContext } from '../context/PetContext';
 
 const PetDetails = () => {
-  const { selectedPet, setSelectedPet } = usePetContext();
+  const { selectedPet } = usePetContext();
+
   const navigate = useNavigate();
 
   useEffect(() => {

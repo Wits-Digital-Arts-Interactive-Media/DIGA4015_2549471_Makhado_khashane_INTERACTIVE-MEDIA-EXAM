@@ -4,20 +4,27 @@ import { Link, NavLink } from 'react-router-dom';
 const Navbar = () => {
   return (
     <nav style={{
-      backgroundColor: 'white',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-      padding: '1rem 0'
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      backdropFilter: 'blur(10px)',
+      padding: '1rem 0',
+      position: 'sticky',
+      top: 0,
+      zIndex: 1000,
+      borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
     }}>
       <div className="container" style={{
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 1rem'
       }}>
         <div>
           <Link to="/" style={{
             fontSize: '1.5rem',
             fontWeight: 'bold',
-            color: 'var(--primary)',
+            color: 'white',
             textDecoration: 'none'
           }}>
             Pet Adoption
@@ -33,9 +40,9 @@ const Navbar = () => {
             to="/" 
             end
             style={({ isActive }) => ({
-              color: isActive ? 'var(--primary)' : 'var(--text)',
+              color: 'white',
               textDecoration: 'none',
-              borderBottom: isActive ? '2px solid var(--primary)' : 'none',
+              borderBottom: isActive ? '2px solid white' : 'none',
               paddingBottom: '0.25rem'
             })}
           >
@@ -45,9 +52,9 @@ const Navbar = () => {
           <NavLink 
             to="/pets"
             style={({ isActive }) => ({
-              color: isActive ? 'var(--primary)' : 'var(--text)',
+              color: 'white',
               textDecoration: 'none',
-              borderBottom: isActive ? '2px solid var(--primary)' : 'none',
+              borderBottom: isActive ? '2px solid white' : 'none',
               paddingBottom: '0.25rem'
             })}
           >
@@ -55,11 +62,23 @@ const Navbar = () => {
           </NavLink>
           
           <NavLink 
+            to="/leaderboard"
+            style={({ isActive }) => ({
+              color: 'white',
+              textDecoration: 'none',
+              borderBottom: isActive ? '2px solid white' : 'none',
+              paddingBottom: '0.25rem'
+            })}
+          >
+            Leaderboard
+          </NavLink>
+          
+          <NavLink 
             to="/adoption"
             style={({ isActive }) => ({
-              color: isActive ? 'white' : 'white',
+              color: 'white',
               textDecoration: 'none',
-              backgroundColor: isActive ? 'var(--primary-dark)' : 'var(--primary)',
+              backgroundColor: isActive ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)',
               padding: '0.5rem 1rem',
               borderRadius: '0.5rem',
               transition: 'background-color 0.2s ease'
@@ -71,13 +90,25 @@ const Navbar = () => {
           <NavLink 
             to="/about"
             style={({ isActive }) => ({
-              color: isActive ? 'var(--primary)' : 'var(--text)',
+              color: 'white',
               textDecoration: 'none',
-              borderBottom: isActive ? '2px solid var(--primary)' : 'none',
+              borderBottom: isActive ? '2px solid white' : 'none',
               paddingBottom: '0.25rem'
             })}
           >
             About
+          </NavLink>
+
+          <NavLink 
+            to="/design"
+            style={({ isActive }) => ({
+              color: 'white',
+              textDecoration: 'none',
+              borderBottom: isActive ? '2px solid white' : 'none',
+              paddingBottom: '0.25rem'
+            })}
+          >
+            Design
           </NavLink>
         </div>
       </div>

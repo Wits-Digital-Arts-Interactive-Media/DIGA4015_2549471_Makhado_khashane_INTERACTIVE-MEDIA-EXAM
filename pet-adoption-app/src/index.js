@@ -8,10 +8,10 @@ import './styles/globals.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <PetProvider>
+    <PetProvider>
+      <BrowserRouter>
         <App />
-      </PetProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </PetProvider>
   </React.StrictMode>
 );
