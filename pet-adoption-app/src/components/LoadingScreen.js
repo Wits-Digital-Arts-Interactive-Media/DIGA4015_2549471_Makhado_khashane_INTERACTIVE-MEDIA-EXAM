@@ -4,6 +4,29 @@ const LoadingScreen = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Create and preload audio element for bark sound
+    const barkSound = new Audio('https://www.free-sounds.net/sound-files/animal-sounds/dog-sounds/DOG10.WAV');
+    barkSound.volume = 0.4; // Set volume to 40%
+    
+    const playBark = async () => {
+      try {
+        // Reset the audio to start
+        barkSound.currentTime = 0;
+        // Create a promise to handle audio loading
+        const playPromise = barkSound.play();
+        if (playPromise !== undefined) {
+          await playPromise;
+        }
+      } catch (error) {
+        console.log('Audio playback failed:', error);
+      }
+    };
+
+    // Preload the audio
+    barkSound.load();
+    // Play initial bark after a short delay to ensure audio is loaded
+    setTimeout(() => playBark(), 100);
+
     const timer = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -11,11 +34,19 @@ const LoadingScreen = ({ onFinish }) => {
           setTimeout(() => onFinish(), 500);
           return 100;
         }
+        // Play bark sound at 45% and 90% progress
+        if (prev === 45 || prev === 90) {
+          playBark();
+        }
         return prev + 5;
       });
     }, 50);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      barkSound.pause();
+      barkSound.currentTime = 0;
+    };
   }, [onFinish]);
 
   return (
@@ -33,7 +64,12 @@ const LoadingScreen = ({ onFinish }) => {
       zIndex: 9999,
     }}>
       {/* Vector Dog Drawing */}
-      <div style={{ marginBottom: '2rem', width: '200px', height: '200px' }}>
+      <div style={{ 
+        marginBottom: '2rem', 
+        width: '200px', 
+        height: '200px',
+        animation: progress >= 50 ? 'wiggle 0.5s ease' : 'none'
+      }}>
         <svg viewBox="0 0 512 512" fill="white">
           <path d="M256,44.8c-7.2,0-14.4,1.6-20.8,4.8l-144,72C76.8,129.6,68,144,68,160v156.8c0,16,8.8,30.4,22.4,38.4l144,72
             c6.4,3.2,13.6,4.8,20.8,4.8s14.4-1.6,20.8-4.8l144-72c13.6-8,22.4-22.4,22.4-38.4V160c0-16-8.8-30.4-22.4-38.4l-144-72
@@ -75,6 +111,12 @@ const LoadingScreen = ({ onFinish }) => {
           @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+          }
+          @keyframes wiggle {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
           }
         `}
       </style>

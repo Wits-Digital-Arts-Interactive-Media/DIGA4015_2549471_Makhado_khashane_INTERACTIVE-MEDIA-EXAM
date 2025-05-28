@@ -15,6 +15,23 @@ const Adoption = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  // Create and preload bark sound
+  const barkSound = new Audio('https://www.free-sounds.net/sound-files/animal-sounds/dog-sounds/DOG10.WAV');
+  barkSound.volume = 0.4;
+  barkSound.load(); // Preload the audio
+
+  const playBark = async () => {
+    try {
+      barkSound.currentTime = 0; // Reset to start
+      const playPromise = barkSound.play();
+      if (playPromise !== undefined) {
+        await playPromise;
+      }
+    } catch (error) {
+      console.log('Audio playback failed:', error);
+    }
+  };
+
   const validateForm = () => {
     const newErrors = {};
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
@@ -58,6 +75,7 @@ const Adoption = () => {
     setIsSubmitting(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
+      await playBark(); // Play bark sound on successful submission
       setSubmitSuccess(true);
       setFormData({
         firstName: '',
@@ -111,7 +129,8 @@ const Adoption = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'white'
+              color: 'white',
+              animation: 'bounce 0.5s ease'
             }}>
               ✓
             </div>

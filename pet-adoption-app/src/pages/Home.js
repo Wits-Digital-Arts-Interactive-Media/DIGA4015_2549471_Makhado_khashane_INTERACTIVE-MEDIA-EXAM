@@ -14,6 +14,14 @@ const Home = () => {
 
   return (
     <div>
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+          }
+        `}
+      </style>
       <section className="hero" style={{ 
         textAlign: 'center', 
         padding: '4rem 1rem',
@@ -23,25 +31,28 @@ const Home = () => {
         minHeight: '80vh',
         justifyContent: 'center'
       }}>
-        <div className="hero-content" style={{ maxWidth: '800px', margin: '0 auto' }}>
-  <img 
-    src="/assets/dog-hero.png" 
-    alt="Happy dog illustration" 
-    style={{
-      width: '200px',
-      marginBottom: '2rem',
-      animation: 'float 3s ease-in-out infinite'
-    }} 
-  />
-  <h1 style={{ 
-    fontSize: '4rem', 
-    marginBottom: '1.5rem',
-    color: 'white',
-    fontWeight: '700',
-    lineHeight: '1.2'
-  }}>
-    Find your perfect companion today
-  </h1>
+        <div className="hero-content" style={{ maxWidth: '800px', margin: '0 auto', position: 'relative' }}>
+          <div style={{ marginBottom: '3rem', position: 'relative' }}>
+            <img 
+              src="/assets/dog-hero.png" 
+              alt="Happy dog illustration" 
+              style={{
+                width: '280px',
+                animation: 'float 3s ease-in-out infinite',
+                display: 'block',
+                margin: '0 auto'
+              }} 
+            />
+          </div>
+          <h1 style={{ 
+            fontSize: '4rem', 
+            marginBottom: '1.5rem',
+            color: 'white',
+            fontWeight: '700',
+            lineHeight: '1.2'
+          }}>
+            Find your perfect companion today
+          </h1>
 
           <p style={{ 
             fontSize: '1.25rem',

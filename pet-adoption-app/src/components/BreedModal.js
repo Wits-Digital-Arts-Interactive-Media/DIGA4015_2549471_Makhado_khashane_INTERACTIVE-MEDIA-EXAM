@@ -69,7 +69,7 @@ const descriptionStyle = {
 };
 
 const BreedModal = ({ breed, onClose }) => {
-  // ✅ Always run this hook, regardless of `breed`'s presence
+  //   running this hook, regardless of `breed`'s presence
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === 'Escape') onClose();
@@ -78,7 +78,7 @@ const BreedModal = ({ breed, onClose }) => {
     return () => window.removeEventListener('keydown', handleEsc);
   }, [onClose]);
 
-  // 🚫 Conditional return after hook call (safe now)
+  //  Conditional return after hook call (safe now)
   if (!breed) return null;
 
   return (

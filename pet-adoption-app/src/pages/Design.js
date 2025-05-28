@@ -1,10 +1,14 @@
 import React from 'react';
+import WireframeSlider from '../components/WireframeSlider';
 
 const Design = () => {
   return (
     <div className="container" style={{ padding: '3rem 1rem', maxWidth: '960px', margin: '0 auto' }}>
       <h1 style={{ fontSize: '3rem', color: 'white', marginBottom: '2rem', textAlign: 'center' }}>Design System</h1>
       
+      {/* Wireframe Slider */}
+      <WireframeSlider />
+
       {/* Color Palette Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
@@ -37,7 +41,7 @@ const Design = () => {
         </div>
       </div>
 
-      {/* Typography Section */}
+      {/* Original Typography Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
@@ -68,7 +72,7 @@ const Design = () => {
         </div>
       </div>
 
-      {/* Components Section */}
+      {/* Original Components Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
@@ -116,7 +120,7 @@ const Design = () => {
         </div>
       </div>
 
-      {/* Design Principles Section */}
+      {/* Original Design Principles Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
@@ -227,7 +231,7 @@ const Design = () => {
         </div>
       </div>
 
-      {/* Visual Design Analysis Section */}
+      {/* Original Visual Design Analysis Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
@@ -270,7 +274,7 @@ const Design = () => {
         </div>
       </div>
 
-      {/* Development Timeline Section */}
+      {/* Original Development Timeline Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
