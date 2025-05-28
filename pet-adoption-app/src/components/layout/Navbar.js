@@ -60,6 +60,18 @@ const Navbar = () => {
           >
             Pets
           </NavLink>
+
+          <NavLink 
+            to="/breeds"
+            style={({ isActive }) => ({
+              color: 'white',
+              textDecoration: 'none',
+              borderBottom: isActive ? '2px solid white' : 'none',
+              paddingBottom: '0.25rem'
+            })}
+          >
+            Breeds
+          </NavLink>
           
           <NavLink 
             to="/leaderboard"

@@ -24,15 +24,25 @@ const Home = () => {
         justifyContent: 'center'
       }}>
         <div className="hero-content" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h1 style={{ 
-            fontSize: '4rem', 
-            marginBottom: '1.5rem',
-            color: 'white',
-            fontWeight: '700',
-            lineHeight: '1.2'
-          }}>
-            Find your perfect companion today
-          </h1>
+  <img 
+    src="/assets/dog-hero.png" 
+    alt="Happy dog illustration" 
+    style={{
+      width: '200px',
+      marginBottom: '2rem',
+      animation: 'float 3s ease-in-out infinite'
+    }} 
+  />
+  <h1 style={{ 
+    fontSize: '4rem', 
+    marginBottom: '1.5rem',
+    color: 'white',
+    fontWeight: '700',
+    lineHeight: '1.2'
+  }}>
+    Find your perfect companion today
+  </h1>
+
           <p style={{ 
             fontSize: '1.25rem',
             marginBottom: '2.5rem',

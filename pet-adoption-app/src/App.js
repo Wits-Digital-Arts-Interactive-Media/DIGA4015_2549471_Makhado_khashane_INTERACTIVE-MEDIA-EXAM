@@ -12,6 +12,7 @@ import PetDetails from './pages/PetDetails';
 import Adoption from './pages/Adoption';
 import Design from './pages/Design';
 import Leaderboard from './pages/Leaderboard';
+import Breeds from './pages/Breeds'; // Import the new Breeds component
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,7 @@ function App() {
           <Route path="/adoption" element={<Adoption />} />
           <Route path="/design" element={<Design />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/breeds" element={<Breeds />} /> {/* Add the new Breeds route */}
         </Routes>
       </main>
       <ScrollToTop />
