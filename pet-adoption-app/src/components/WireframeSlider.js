@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const WireframeSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showText, setShowText] = useState(true);
 
   const wireframes = [
     {
@@ -32,10 +33,16 @@ const WireframeSlider = () => {
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % wireframes.length);
+    setShowText(true); // Reset text visibility on slide change
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + wireframes.length) % wireframes.length);
+    setShowText(true); // Reset text visibility on slide change
+  };
+
+  const toggleText = () => {
+    setShowText(prev => !prev);
   };
 
   return (
@@ -84,8 +91,11 @@ const WireframeSlider = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  position: 'relative'
                 }}
+                onClick={toggleText}
               >
                 <img
                   src={frame.image}
@@ -97,8 +107,24 @@ const WireframeSlider = () => {
                     marginBottom: '1rem'
                   }}
                 />
-                <h3 style={{ color: '#4b47d6', marginBottom: '0.5rem' }}>{frame.title}</h3>
-                <p style={{ color: '#2d3436', textAlign: 'center' }}>{frame.description}</p>
+                <div style={{
+                  opacity: showText ? 1 : 0,
+                  visibility: showText ? 'visible' : 'hidden',
+                  transition: 'opacity 0.3s ease, visibility 0.3s ease',
+                  position: 'absolute',
+                  bottom: '2rem',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  textAlign: 'center',
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  padding: '1rem',
+                  borderRadius: '0.5rem',
+                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                  width: '80%'
+                }}>
+                  <h3 style={{ color: '#4b47d6', marginBottom: '0.5rem' }}>{frame.title}</h3>
+                  <p style={{ color: '#2d3436' }}>{frame.description}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -160,7 +186,10 @@ const WireframeSlider = () => {
           {wireframes.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentSlide(index)}
+              onClick={() => {
+                setCurrentSlide(index);
+                setShowText(true); // Reset text visibility when changing slides
+              }}
               style={{
                 width: '8px',
                 height: '8px',
