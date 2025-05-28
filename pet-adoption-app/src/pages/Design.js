@@ -5,6 +5,7 @@ const Design = () => {
     <div className="container" style={{ padding: '3rem 1rem', maxWidth: '960px', margin: '0 auto' }}>
       <h1 style={{ fontSize: '3rem', color: 'white', marginBottom: '2rem', textAlign: 'center' }}>Design System</h1>
       
+      {/* Color Palette Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
@@ -36,6 +37,7 @@ const Design = () => {
         </div>
       </div>
 
+      {/* Typography Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
@@ -66,6 +68,7 @@ const Design = () => {
         </div>
       </div>
 
+      {/* Components Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
@@ -113,6 +116,7 @@ const Design = () => {
         </div>
       </div>
 
+      {/* Design Principles Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
@@ -159,7 +163,7 @@ const Design = () => {
         </div>
       </div>
 
-      {/* User Research Section */}
+      {/* Original User Research Section */}
       <div style={{ 
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         borderRadius: '1rem',
@@ -327,6 +331,333 @@ const Design = () => {
               </ul>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* New Mockup Analysis Section */}
+      <div style={{ 
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        borderRadius: '1rem',
+        padding: '2rem',
+        marginBottom: '3rem',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)'
+      }}>
+        <h2 style={{ color: '#4b47d6', marginBottom: '1.5rem', fontSize: '2rem' }}>Mockup Analysis: Homepage Layout</h2>
+        <div style={{ color: '#2d3436' }}>
+          <div style={{ marginBottom: '2rem' }}>
+            <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Navigation Bar</h3>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '0.5rem' }}>• Minimalistic top bar with evenly spaced links</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Brand name ("PETPOINT") prominently positioned and visually anchored</li>
+            </ul>
+          </div>
+
+          <div style={{ marginBottom: '2rem' }}>
+            <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Hero Section</h3>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '0.5rem' }}>• Bold headline ("Discover And Capture Rare Pets") supported by a short contextual quote</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Two primary call-to-action buttons: "Explore" and "Capture," both clearly styled and positioned</li>
+            </ul>
+          </div>
+
+          <div style={{ marginBottom: '2rem' }}>
+            <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Affiliation Section</h3>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '0.5rem' }}>• Logos of reputable local news outlets (e.g., SABC, Daily Sun) reinforce credibility</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Dark background creates a necessary visual break from the lighter UI sections</li>
+            </ul>
+          </div>
+
+          <div style={{ marginBottom: '2rem' }}>
+            <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Informational Panels</h3>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '0.5rem' }}>• Structured in two-column layouts: icon/illustration on one side, supporting text on the other</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Consistent use of CTAs such as "Explore Rewards" and "Capture a Pet"</li>
+            </ul>
+          </div>
+
+          <div style={{ marginBottom: '2rem' }}>
+            <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Pet Profiles</h3>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '0.5rem' }}>• Stylized cards for pet types (e.g., Bull Dog, Sausage Dog, French Bulldog)</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Includes common names, scientific names, and a brief description with bullet points</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Background contrast enhances readability and draws attention to individual cards</li>
+            </ul>
+          </div>
+
+          <div style={{ marginBottom: '2rem' }}>
+            <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Closing CTA</h3>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '0.5rem' }}>• A full-width gradient section encouraging user action ("Be A Part Of The Next Big Thing")</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Prominent "Get Started" button serves as a concluding interaction point</li>
+            </ul>
+          </div>
+
+          <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: 'rgba(108, 99, 255, 0.1)', borderRadius: '0.75rem' }}>
+            <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Evaluation</h3>
+            <p style={{ color: '#2d3436', lineHeight: '1.6' }}>
+              The layout employs effective spacing, alignment, and visual hierarchy. Each section transitions smoothly into the next, maintaining user interest and supporting an intuitive browsing experience. Visual contrast and typographic clarity are consistently maintained throughout.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* New Design System and Usability Section */}
+      <div style={{ 
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        borderRadius: '1rem',
+        padding: '2rem',
+        marginBottom: '3rem',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)'
+      }}>
+        <h2 style={{ color: '#4b47d6', marginBottom: '1.5rem', fontSize: '2rem' }}>Additional Design System and Usability Considerations</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+          {[
+            {
+              title: "Consistency",
+              description: "The reuse of fonts, button shapes, and icon styles contributes to a unified and professional design system."
+            },
+            {
+              title: "Accessibility",
+              description: "Colour contrast between text and background supports readability for a wider range of users, including those with visual impairments."
+            },
+            {
+              title: "Whitespace and Layout",
+              description: "Thoughtful use of whitespace ensures that the interface remains uncluttered and user-friendly."
+            },
+            {
+              title: "Emotional Design",
+              description: "The combination of pets, clean visuals, and relatable copywriting strengthens emotional engagement and encourages exploration."
+            }
+          ].map((item, index) => (
+            <div key={index} style={{
+              padding: '1.5rem',
+              backgroundColor: 'rgba(108, 99, 255, 0.1)',
+              borderRadius: '0.75rem',
+              border: '1px solid rgba(108, 99, 255, 0.2)'
+            }}>
+              <h3 style={{ color: '#4b47d6', marginBottom: '1rem', fontSize: '1.25rem' }}>{item.title}</h3>
+              <p style={{ color: '#2d3436' }}>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* New Accessibility Section */}
+      <div style={{ 
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        borderRadius: '1rem',
+        padding: '2rem',
+        marginBottom: '3rem',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)'
+      }}>
+        <h2 style={{ color: '#4b47d6', marginBottom: '1.5rem', fontSize: '2rem' }}>Enhanced Accessibility Features</h2>
+        
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>High Contrast Text and Backgrounds</h3>
+          <p style={{ color: '#2d3436' }}>All text elements meet or exceed the Web Content Accessibility Guidelines (WCAG) standards for contrast ratio, ensuring clear readability in low-vision scenarios.</p>
+        </div>
+
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Descriptive Alternative Text</h3>
+          <p style={{ color: '#2d3436' }}>All images, particularly those showcasing different dog breeds, include descriptive alt attributes for screen reader compatibility.</p>
+        </div>
+
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Keyboard Navigation</h3>
+          <p style={{ color: '#2d3436' }}>Full support for keyboard-based interaction, ensuring usability for individuals with motor disabilities or those using assistive technology.</p>
+        </div>
+      </div>
+
+      {/* Information Architecture Section */}
+      <div style={{ 
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        borderRadius: '1rem',
+        padding: '2rem',
+        marginBottom: '3rem',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)'
+      }}>
+        <h2 style={{ color: '#4b47d6', marginBottom: '1.5rem', fontSize: '2rem' }}>Information Architecture</h2>
+        
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Sitemap</h3>
+          <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
+            <li style={{ marginBottom: '0.5rem' }}>• Home</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Dog Spotting Map</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Upload Rare Dog (Photo & Details Submission)</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Leaderboard & Rewards Dashboard</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Settings (Notifications, Preferences)</li>
+          </ul>
+        </div>
+
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>User Flow</h3>
+          <div style={{ 
+            padding: '1.5rem',
+            backgroundColor: 'rgba(108, 99, 255, 0.1)',
+            borderRadius: '0.75rem',
+            border: '1px solid rgba(108, 99, 255, 0.2)'
+          }}>
+            <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
+              <li style={{ marginBottom: '0.5rem' }}>1. User opens the app → Views rare dog map → Uploads a spotted dog.</li>
+              <li style={{ marginBottom: '0.5rem' }}>2. User gains points for each verified upload → Competes on leaderboard.</li>
+              <li style={{ marginBottom: '0.5rem' }}>3. User redeems points for pet-related rewards (discounts, free treats, etc.).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Enhanced Responsiveness Section */}
+      <div style={{ 
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        borderRadius: '1rem',
+        padding: '2rem',
+        marginBottom: '3rem',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)'
+      }}>
+        <h2 style={{ color: '#4b47d6', marginBottom: '1.5rem', fontSize: '2rem' }}>Enhanced Responsiveness Strategy</h2>
+        
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Mobile-First Approach</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+            {[
+              {
+                title: "Fluid Grid Layouts",
+                description: "Dynamic adaptation using percentage-based grids and media queries. Content stacks vertically on smaller screens."
+              },
+              {
+                title: "Scalable Media",
+                description: "Images and videos use relative units (max-width: 100%, height: auto). SVG icons preferred for clarity."
+              },
+              {
+                title: "Touch-Friendly",
+                description: "Increased padding (44px minimum) for better touch targets. Swipe-based navigation enabled."
+              },
+              {
+                title: "Typography",
+                description: "Font sizes scale using clamp(), em, or rem units for consistent readability across devices."
+              }
+            ].map((item, index) => (
+              <div key={index} style={{
+                padding: '1.5rem',
+                backgroundColor: 'rgba(108, 99, 255, 0.1)',
+                borderRadius: '0.75rem',
+                border: '1px solid rgba(108, 99, 255, 0.2)'
+              }}>
+                <h4 style={{ color: '#4b47d6', marginBottom: '0.5rem' }}>{item.title}</h4>
+                <p style={{ color: '#2d3436' }}>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Responsive Components</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+            {[
+              {
+                title: "Stacked Navigation",
+                description: "Hamburger menu on mobile with optimized dropdowns. useState toggle for responsive menu control."
+              },
+              {
+                title: "Hero Section",
+                description: "Resized fonts, reduced spacing, vertically stacked CTA buttons on mobile."
+              },
+              {
+                title: "Card Layout",
+                description: "Three-column to single-column transition with increased touch spacing."
+              },
+              {
+                title: "Footer",
+                description: "Vertical stacking of columns and enlarged social/contact icons for mobile."
+              }
+            ].map((item, index) => (
+              <div key={index} style={{
+                padding: '1.5rem',
+                backgroundColor: 'rgba(108, 99, 255, 0.1)',
+                borderRadius: '0.75rem',
+                border: '1px solid rgba(108, 99, 255, 0.2)'
+              }}>
+                <h4 style={{ color: '#4b47d6', marginBottom: '0.5rem' }}>{item.title}</h4>
+                <p style={{ color: '#2d3436' }}>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Performance Optimization</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+            {[
+              {
+                title: "Image Optimization",
+                description: "Modern compression techniques for optimal file size while maintaining quality. Essential for dog breed photos."
+              },
+              {
+                title: "Lazy Loading",
+                description: "Content loaded on-demand to improve initial load time and conserve data usage. Particularly important for mobile users."
+              },
+              {
+                title: "API Caching",
+                description: "Local caching of leaderboard entries, user profiles, and map content for improved response times."
+              }
+            ].map((item, index) => (
+              <div key={index} style={{
+                padding: '1.5rem',
+                backgroundColor: 'rgba(108, 99, 255, 0.1)',
+                borderRadius: '0.75rem',
+                border: '1px solid rgba(108, 99, 255, 0.2)'
+              }}>
+                <h4 style={{ color: '#4b47d6', marginBottom: '0.5rem' }}>{item.title}</h4>
+                <p style={{ color: '#2d3436' }}>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* New App Concept Section */}
+      <div style={{ 
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        borderRadius: '1rem',
+        padding: '2rem',
+        marginBottom: '3rem',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.2)'
+      }}>
+        <h2 style={{ color: '#4b47d6', marginBottom: '1.5rem', fontSize: '2rem' }}>App Concept and Future Adaptations</h2>
+        
+        <div style={{ marginBottom: '2rem' }}>
+          <p style={{ color: '#2d3436', lineHeight: '1.6' }}>
+            The PetScanning platform identifies rare dog breeds and allows users to report sightings to local shelters. Users earn points for a national leaderboard and can engage with virtual pets, creating a tool that's both fun and socially responsible.
+          </p>
+        </div>
+
+        <div style={{ marginBottom: '2rem' }}>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>What Works Well</h3>
+          <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
+            <li style={{ marginBottom: '0.5rem' }}>• Gamified Interaction with Real-World Outcomes</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Shelter Collaboration and User Contribution</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Educational Play through Virtual Pet Care</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Visual Inspiration: Mr D</h3>
+          <p style={{ color: '#2d3436', lineHeight: '1.6' }}>
+            Inspired by Mr D's website design approach, particularly their use of animated vector illustrations and playful transitions while maintaining a clean layout structure.
+          </p>
         </div>
       </div>
     </div>
