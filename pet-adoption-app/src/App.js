@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollProgressBar from './components/ScrollProgressBar';
 import LoadingScreen from './components/LoadingScreen';
 import NewsTicker from './components/NewsTicker';
 import Home from './pages/Home';
@@ -51,6 +52,7 @@ function App() {
         </Routes>
       </main>
       <ScrollToTop />
+      <ScrollProgressBar />
       <Footer />
     </div>
   );
