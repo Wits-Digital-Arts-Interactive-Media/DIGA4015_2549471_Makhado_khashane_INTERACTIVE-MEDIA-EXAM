@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePetContext } from '../context/PetContext';
 
@@ -14,6 +14,7 @@ const Pets = () => {
     refreshPets 
   } = usePetContext();
   const [filter, setFilter] = useState('all');
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
@@ -21,7 +22,8 @@ const Pets = () => {
     const matchesFilter = filter === 'all' || pet.type.toLowerCase() === filter;
     const matchesSearch = pet.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          pet.breed.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesFilter && matchesSearch;
+    const matchesFavorites = !showFavoritesOnly || favorites.some(fav => fav.id === pet.id);
+    return matchesFilter && matchesSearch && matchesFavorites;
   });
 
   const handleFavoriteClick = (e, pet) => {
@@ -40,7 +42,13 @@ const Pets = () => {
 
   const handleRefresh = async () => {
     await refreshPets();
+    setShowFavoritesOnly(false); // Reset favorites filter on refresh
   };
+
+  // Reset favorites filter on page load/refresh
+  useEffect(() => {
+    setShowFavoritesOnly(false);
+  }, []);
 
   if (loading) {
     return (
@@ -163,6 +171,28 @@ const Pets = () => {
               {type.charAt(0).toUpperCase() + type.slice(1)}s
             </button>
           ))}
+          <button
+            onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+            style={{
+              padding: '0.75rem 1.5rem',
+              borderRadius: '0.5rem',
+              border: 'none',
+              backgroundColor: showFavoritesOnly ? 'var(--error)' : 'var(--gray-200)',
+              color: showFavoritesOnly ? 'white' : 'var(--text)',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              fontSize: '1rem',
+              fontWeight: '500',
+              minWidth: '100px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              justifyContent: 'center'
+            }}
+          >
+            <span style={{ fontSize: '1.2rem' }}>♥</span>
+            Favorites
+          </button>
         </div>
       </div>
 
@@ -265,14 +295,49 @@ const Pets = () => {
                 }}>
                   {pet.breed} • {pet.age}
                 </p>
-                <button 
-                  className="btn btn-primary"
+                <style>
+                  {`
+                    @keyframes pulseButton {
+                      0% { transform: scale(1); }
+                      50% { transform: scale(1.02); }
+                      100% { transform: scale(1); }
+                    }
+                  `}
+                </style>
+                <button
                   style={{
                     width: '100%',
-                    padding: '0.75rem',
-                    fontSize: '1.1rem',
-                    borderRadius: '0.5rem',
-                    transition: 'all 0.2s ease'
+                    padding: '1.2rem',
+                    fontSize: '1.25rem',
+                    borderRadius: '1rem',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    background: 'linear-gradient(to right, #6c63ff, #4b47d6)',
+                    color: 'white',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontWeight: '600',
+                    boxShadow: '0 4px 15px rgba(108, 99, 255, 0.3)',
+                    transform: 'translateY(0) scale(1)',
+                    opacity: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.75rem',
+                    letterSpacing: '0.5px',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(108, 99, 255, 0.4)';
+                    e.currentTarget.style.background = 'linear-gradient(to right, #4b47d6, #6c63ff)';
+                    e.currentTarget.style.animation = 'pulseButton 2s infinite';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(108, 99, 255, 0.3)';
+                    e.currentTarget.style.background = 'linear-gradient(to right, #6c63ff, #4b47d6)';
+                    e.currentTarget.style.animation = 'none';
                   }}
                   onClick={(e) => {
                     e.stopPropagation();
@@ -280,7 +345,8 @@ const Pets = () => {
                     navigate('/adoption');
                   }}
                 >
-                  Adopt {pet.name}
+                  <span style={{ fontSize: '1.3rem' }}>🐾</span>
+                  <span>Adopt {pet.name}</span>
                 </button>
               </div>
             </div>

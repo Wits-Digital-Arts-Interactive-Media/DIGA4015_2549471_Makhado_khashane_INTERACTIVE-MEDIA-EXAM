@@ -41,15 +41,16 @@ function App() {
       <NewsTicker />
       <main style={{ flex: 1 }}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/pets" element={<Pets />} />
-          <Route path="/pets/:id" element={<PetDetails />} />
-          <Route path="/adoption" element={<Adoption />} />
-          <Route path="/design" element={<Design />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/breeds" element={<Breeds />} /> {/* Add the new Breeds route */}
+        <Route path="/" element={<Home />} />
+        <Route path="/pets" element={<Pets />} />
+        <Route path="/pets/:id" element={<PetDetails />} />
+        <Route path="/breeds" element={<Breeds />} />
+        <Route path="/adoption" element={<Adoption />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/design" element={<Design />} />
+        <Route path="/about" element={<About />} />
         </Routes>
+
       </main>
       <ScrollToTop />
       <ScrollProgressBar />
