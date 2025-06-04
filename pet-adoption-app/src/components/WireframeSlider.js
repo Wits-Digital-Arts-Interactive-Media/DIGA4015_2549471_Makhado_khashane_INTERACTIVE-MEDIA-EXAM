@@ -5,79 +5,79 @@ const WireframeSlider = () => {
   const [showText, setShowText] = useState(true);
   const [showChanges, setShowChanges] = useState(false);
 
+  const introText = "The following wireframes showcase the evolution from Assignment Two's PETPOINT website to our current Pet Adoption platform. Each wireframe highlights specific changes made to transform the pet-spotting concept into a dedicated adoption service, with detailed explanations of the design decisions and their relevance to improving user experience.";
+
   const wireframes = [
     {
       id: 1,
       image: '/wireframes/wireframe1.png',
-      title: 'Homepage Wireframe',
-      description: 'Initial layout design for the main landing page',
+      title: 'Homepage Redesign',
+      description: 'Transformation from pet-spotting to adoption-focused homepage',
       changes: [
-        'Added gradient animations to enhance visual appeal',
-        'Implemented floating animation for the hero image',
-        'Increased text contrast for better readability',
-        'Added interactive elements to improve engagement'
+        'Replaced pet scanning section with adoptable pets gallery',
+        'Changed hero message to focus on pet adoption',
+        'Added clear call-to-action buttons for adoption process',
+        'Simplified navigation to prioritize finding pets'
       ]
     },
     {
       id: 2,
       image: '/wireframes/wireframe2.png',
-      title: 'Pet Capture Page',
-      description: 'Camera Toggle to Capture Pets',
+      title: 'Pet Details Page',
+      description: 'Evolution from pet identification to adoption information',
       changes: [
-        'Enhanced image gallery with smooth transitions',
-        'Added favorite button with animation feedback',
-        'Implemented progress bar for adoption status',
-        'Improved information hierarchy for better scanning'
+        'Replaced breed identification with detailed pet profiles',
+        'Added adoption application button',
+        'Included comprehensive pet characteristics section',
+        'Enhanced photo gallery for better pet presentation'
       ]
     },
     {
       id: 3,
       image: '/wireframes/wireframe3.png',
-      title: 'User Leaderboard',
-      description: 'Capture Leaderboard',
+      title: 'Achievement System',
+      description: 'Gamification elements adapted for adoption process',
       changes: [
-        'Simplified form layout for better user experience',
-        'Added progress indicators for multi-step process',
-        'Implemented real-time validation feedback',
-        'Enhanced confirmation messages with animations'
+        'Converted points system to adoption progress tracking',
+        'Added favorite pets functionality',
+        'Implemented pet browsing history',
+        'Created adoption milestone celebrations'
       ]
     },
     {
       id: 4,
       image: '/wireframes/wireframe5.png',
-      title: 'User Dashboard',
-      description: 'Personal space for managing adoptions and favorites',
+      title: 'About Page Update',
+      description: 'Refocused mission on pet adoption',
       changes: [
-        'Added dynamic data visualization elements',
-        'Implemented card-based layout for better organization',
-        'Enhanced notification system with animations',
-        'Added quick action buttons for common tasks'
+        'Updated mission statement for adoption focus',
+        'Added team member profiles and roles',
+        'Included adoption process explanation',
+        'Enhanced visual presentation of our goals'
       ]
     },
-
-     {
+    {
       id: 5,
       image: '/wireframes/wireframe6.png',
-      title: 'User Dashboard',
-      description: 'Personal space for managing adoptions and favorites',
+      title: 'User Interface Updates',
+      description: 'Design system adapted for adoption platform',
       changes: [
-        'Added dynamic data visualization elements',
-        'Implemented card-based layout for better organization',
-        'Enhanced notification system with animations',
-        'Added quick action buttons for common tasks'
+        'Implemented consistent adoption-focused terminology',
+        'Updated color scheme for better accessibility',
+        'Enhanced button and form styles',
+        'Improved mobile responsiveness'
       ]
     },
-    
-     {
+    {
       id: 6,
       image: '/wireframes/wireframe7.png',
-      title: 'User Dashboard',
-      description: 'Personal space for managing adoptions and favorites',
+      title: 'Component Refinements',
+      description: 'Core components redesigned for adoption use',
       changes: [
-        'Added dynamic data visualization elements',
-        'Implemented card-based layout for better organization',
-        'Enhanced notification system with animations',
-        'Added quick action buttons for common tasks'
+        'Created standardized pet card components',
+        'Developed adoption form elements',
+        'Added progress indicators for applications',
+        'Improved search and filter components'
       ]
     }
   ];
@@ -119,11 +119,20 @@ const WireframeSlider = () => {
       </style>
       <h2 style={{ 
         color: '#4b47d6', 
-        marginBottom: '1.5rem', 
+        marginBottom: '1rem', 
         fontSize: '2rem' 
       }}>
         Wireframes
       </h2>
+      
+      <p style={{
+        color: '#2d3436',
+        marginBottom: '2rem',
+        lineHeight: '1.6',
+        fontSize: '1.1rem'
+      }}>
+        {introText}
+      </p>
       
       <div style={{ position: 'relative' }}>
         <div style={{
@@ -162,7 +171,7 @@ const WireframeSlider = () => {
                   alt={frame.title}
                   style={{
                     maxWidth: '100%',
-            maxHeight: '500px',
+                    maxHeight: '500px',
                     objectFit: 'contain',
                     marginBottom: '1rem',
                     filter: showChanges ? 'blur(3px)' : 'none',
