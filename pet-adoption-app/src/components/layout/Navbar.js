@@ -108,6 +108,10 @@ const Navbar = () => {
             Leaderboard
           </NavLink>
 
+          <NavLink to="/essay" style={navStyle}>
+            Essay
+          </NavLink>
+
           <NavLink to="/design" style={navStyle}>
             Design
           </NavLink>

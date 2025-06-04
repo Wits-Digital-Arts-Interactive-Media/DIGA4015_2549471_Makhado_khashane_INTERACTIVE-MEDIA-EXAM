@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Counter from '../components/Counter';
 
 const teamMembers = [
   {
@@ -24,23 +26,14 @@ const teamMembers = [
   {
     name: 'Michael Chen',
     role: 'Veterinarian',
-    image: '/assets/team/michael.jpg',
+    image: '/assets/dog-hero.png',
     description: 'Expert in pet health and well-being.',
     social: {
       linkedin: '#',
       twitter: '#'
     }
   },
-  {
-    name: 'Emily Davis',
-    role: 'Animal Behaviorist',
-    image: '/assets/team/emily.jpg',
-    description: 'Specializes in pet behavior and training.',
-    social: {
-      linkedin: '#',
-      twitter: '#'
-    }
-  }
+  
 ];
 
 const About = () => {
@@ -91,13 +84,18 @@ const About = () => {
               textAlign: 'center',
               backdropFilter: 'blur(10px)'
             }}>
-              <h3 style={{
-                fontSize: '2.5rem',
-                color: '#6c63ff',
-                marginBottom: '0.5rem'
+              <div style={{ 
+                fontSize: '2.5rem', 
+                color: '#6c63ff', 
+                marginBottom: '0.5rem',
+                fontWeight: '700'
               }}>
-                {stat.number}
-              </h3>
+                <Counter 
+                  target={parseInt(stat.number)} 
+                  duration={1500} 
+                  suffix={stat.label === 'Success Rate' ? '%' : '+'} 
+                />
+              </div>
               <p style={{
                 color: 'white',
                 fontSize: '1.1rem'

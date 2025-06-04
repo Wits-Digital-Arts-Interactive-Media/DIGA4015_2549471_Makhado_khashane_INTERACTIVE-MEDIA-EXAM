@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './styles/globals.css';
 import { Routes, Route } from 'react-router-dom';
 import { PetProvider } from './context/PetContext';
 import { AdoptedPetProvider } from './context/AdoptedPetContext';
@@ -17,6 +18,7 @@ import Design from './pages/Design';
 import Leaderboard from './pages/Leaderboard';
 import Breeds from './pages/Breeds';
 import MyPet from './pages/MyPet';
+import Essay from './pages/Essay';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -55,6 +57,7 @@ function App() {
               <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/breeds" element={<Breeds />} />
               <Route path="/my-pet/:id" element={<MyPet />} />
+              <Route path="/essay" element={<Essay />} />
             </Routes>
           </main>
           <ScrollToTop />
