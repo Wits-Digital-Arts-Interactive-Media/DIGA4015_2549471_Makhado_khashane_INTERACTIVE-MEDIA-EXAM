@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useAdoptedPet } from '../../context/AdoptedPetContext';
 
 const Navbar = () => {
+  const { adoptedPets } = useAdoptedPet();
+
   // Styles
   const navStyle = ({ isActive }) => ({
     color: 'white',
@@ -70,6 +73,36 @@ const Navbar = () => {
           <NavLink to="/adoption" style={activeButtonStyle}>
             Adoption
           </NavLink>
+
+          {adoptedPets.length > 0 && (
+            <NavLink 
+              to={`/my-pet/${adoptedPets[0].id}`} 
+              style={({ isActive }) => ({
+                ...activeButtonStyle({ isActive }),
+                backgroundColor: isActive ? 'rgba(108, 99, 255, 0.3)' : 'rgba(108, 99, 255, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              })}
+            >
+              <span style={{ fontSize: '1.2rem' }}>🐾</span>
+              My Pet
+              {adoptedPets.length > 1 && (
+                <span style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                  borderRadius: '50%',
+                  width: '20px',
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.8rem'
+                }}>
+                  {adoptedPets.length}
+                </span>
+              )}
+            </NavLink>
+          )}
 
           <NavLink to="/leaderboard" style={navStyle}>
             Leaderboard

@@ -20,6 +20,11 @@ const Home = () => {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
           }
+          @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
         `}
       </style>
       <section className="hero" style={{ 
@@ -40,21 +45,13 @@ const Home = () => {
               animation: 'float 3s ease-in-out infinite'
             }}>
               <div style={{
-                padding: '10px',
-                borderRadius: '22px',
-                background: 'linear-gradient(135deg, #6c63ff, #4b47d6)',
-                animation: 'borderGlow 4s ease-in-out infinite',
-                transition: 'transform 0.3s ease'
+                padding: '8px',
+                borderRadius: '20px',
+                background: 'linear-gradient(135deg, #6c63ff, #ff69b4, white)',
+                backgroundSize: '200% 200%',
+                animation: 'gradientShift 8s linear infinite',
+                boxShadow: '0 0 20px rgba(108, 99, 255, 0.3)'
               }}>
-                <style>
-                  {`
-                    @keyframes borderGlow {
-                      0% { box-shadow: 0 0 20px rgba(108, 99, 255, 0.3); transform: scale(1); }
-                      50% { box-shadow: 0 0 35px rgba(108, 99, 255, 0.5); transform: scale(1.02); }
-                      100% { box-shadow: 0 0 20px rgba(108, 99, 255, 0.3); transform: scale(1); }
-                    }
-                  `}
-                </style>
                 <img 
                   src="/assets/dog-hero.png" 
                   alt="Happy dog illustration" 

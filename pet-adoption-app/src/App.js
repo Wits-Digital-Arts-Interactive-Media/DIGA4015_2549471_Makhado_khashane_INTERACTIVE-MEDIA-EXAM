@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { PetProvider } from './context/PetContext';
+import { AdoptedPetProvider } from './context/AdoptedPetContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -13,7 +15,8 @@ import PetDetails from './pages/PetDetails';
 import Adoption from './pages/Adoption';
 import Design from './pages/Design';
 import Leaderboard from './pages/Leaderboard';
-import Breeds from './pages/Breeds'; // Import the new Breeds component
+import Breeds from './pages/Breeds';
+import MyPet from './pages/MyPet';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -32,30 +35,34 @@ function App() {
   }
 
   return (
-    <div className="app" style={{ 
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column'
-    }}>
-      <Navbar />
-      <NewsTicker />
-      <main style={{ flex: 1 }}>
-        <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/pets" element={<Pets />} />
-        <Route path="/pets/:id" element={<PetDetails />} />
-        <Route path="/breeds" element={<Breeds />} />
-        <Route path="/adoption" element={<Adoption />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/design" element={<Design />} />
-        <Route path="/about" element={<About />} />
-        </Routes>
-
-      </main>
-      <ScrollToTop />
-      <ScrollProgressBar />
-      <Footer />
-    </div>
+    <PetProvider>
+      <AdoptedPetProvider>
+        <div className="app" style={{ 
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column'
+        }}>
+          <Navbar />
+          <NewsTicker />
+          <main style={{ flex: 1 }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/pets" element={<Pets />} />
+              <Route path="/pets/:id" element={<PetDetails />} />
+              <Route path="/adoption" element={<Adoption />} />
+              <Route path="/design" element={<Design />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/breeds" element={<Breeds />} />
+              <Route path="/my-pet/:id" element={<MyPet />} />
+            </Routes>
+          </main>
+          <ScrollToTop />
+          <ScrollProgressBar />
+          <Footer />
+        </div>
+      </AdoptedPetProvider>
+    </PetProvider>
   );
 }
 

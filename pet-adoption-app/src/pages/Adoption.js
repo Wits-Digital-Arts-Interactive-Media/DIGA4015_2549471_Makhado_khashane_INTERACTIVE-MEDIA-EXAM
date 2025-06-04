@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { usePetContext } from '../context/PetContext';
+import { useAdoptedPet } from '../context/AdoptedPetContext';
 
 const Adoption = () => {
+  const navigate = useNavigate();
   const { selectedPet } = usePetContext();
+  const { adoptPet } = useAdoptedPet();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -16,13 +20,13 @@ const Adoption = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   // Create and preload bark sound
-  const barkSound = new Audio('https://www.free-sounds.net/sound-files/animal-sounds/dog-sounds/DOG10.WAV');
+  const barkSound = new Audio('https://cdn.freesound.org/previews/316/316920_5123851-lq.mp3');
   barkSound.volume = 0.4;
-  barkSound.load(); // Preload the audio
+  barkSound.load();
 
   const playBark = async () => {
     try {
-      barkSound.currentTime = 0; // Reset to start
+      barkSound.currentTime = 0;
       const playPromise = barkSound.play();
       if (playPromise !== undefined) {
         await playPromise;
@@ -75,16 +79,25 @@ const Adoption = () => {
     setIsSubmitting(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
-      await playBark(); // Play bark sound on successful submission
-      setSubmitSuccess(true);
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        address: '',
-        message: ''
+      await playBark();
+
+      // Add the pet to adopted pets with owner information
+      const adoptedPet = adoptPet(selectedPet, {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        message: formData.message
       });
+
+      setSubmitSuccess(true);
+
+      // Wait a moment to show success message before redirecting
+      setTimeout(() => {
+        navigate(`/my-pet/${adoptedPet.id}`);
+      }, 2000);
+
     } catch (error) {
       setErrors({ submit: 'Failed to submit form. Please try again.' });
     } finally {
@@ -92,31 +105,70 @@ const Adoption = () => {
     }
   };
 
+  if (!selectedPet) {
+    return (
+      <div style={{ 
+        padding: '4rem 1rem',
+        textAlign: 'center',
+        maxWidth: '600px',
+        margin: '0 auto'
+      }}>
+        <h2 style={{ 
+          color: '#4b47d6',
+          marginBottom: '1.5rem'
+        }}>
+          No Pet Selected
+        </h2>
+        <p style={{
+          color: '#666',
+          marginBottom: '2rem'
+        }}>
+          Please select a pet from our available pets page to begin the adoption process.
+        </p>
+        <button
+          onClick={() => navigate('/pets')}
+          style={{
+            backgroundColor: '#6c63ff',
+            color: 'white',
+            padding: '1rem 2rem',
+            borderRadius: '0.5rem',
+            border: 'none',
+            fontSize: '1.1rem',
+            cursor: 'pointer',
+            transition: 'transform 0.2s ease'
+          }}
+          onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+          onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+        >
+          View Available Pets
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="container" style={{ padding: '2rem 1rem' }}>
       <div className="card" style={{ maxWidth: '800px', margin: '0 auto' }}>
         <h2 style={{ 
           textAlign: 'center', 
           marginBottom: '2rem',
-          color: 'var(--primary)',
+          color: '#4b47d6',
           fontSize: '2rem'
         }}>
           Adoption Application
         </h2>
 
-        {selectedPet && (
-          <div style={{
-            marginBottom: '2rem',
-            padding: '1rem',
-            backgroundColor: 'var(--gray-100)',
-            borderRadius: '0.5rem',
-            border: '1px solid var(--primary)'
-          }}>
-            <p style={{ color: 'var(--primary)' }}>
-              You are applying to adopt: <span style={{ fontWeight: 'bold' }}>{selectedPet.name}</span>
-            </p>
-          </div>
-        )}
+        <div style={{
+          marginBottom: '2rem',
+          padding: '1rem',
+          backgroundColor: 'rgba(108, 99, 255, 0.1)',
+          borderRadius: '0.5rem',
+          border: '1px solid #6c63ff'
+        }}>
+          <p style={{ color: '#4b47d6' }}>
+            You are applying to adopt: <span style={{ fontWeight: 'bold' }}>{selectedPet.name}</span>
+          </p>
+        </div>
 
         {submitSuccess ? (
           <div style={{ textAlign: 'center', padding: '2rem' }}>
@@ -124,28 +176,28 @@ const Adoption = () => {
               margin: '0 auto',
               width: '3rem',
               height: '3rem',
-              backgroundColor: 'var(--success)',
+              backgroundColor: '#4CAF50',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: 'white',
-              animation: 'bounce 0.5s ease'
+              fontSize: '1.5rem'
             }}>
               ✓
             </div>
             <h3 style={{ 
               marginTop: '1rem',
               fontSize: '1.25rem',
-              color: 'var(--primary)'
+              color: '#4b47d6'
             }}>
-              Application Submitted!
+              Congratulations! Adoption Successful!
             </h3>
             <p style={{ 
               marginTop: '0.5rem',
-              color: 'var(--gray-500)'
+              color: '#666'
             }}>
-              Thank you for your interest in adoption. We will review your application and contact you soon.
+              Redirecting you to your new pet's page...
             </p>
           </div>
         ) : (
@@ -164,11 +216,15 @@ const Adoption = () => {
                   value={formData.firstName}
                   onChange={handleChange}
                   style={{
-                    borderColor: errors.firstName ? 'var(--error)' : 'var(--gray-300)'
+                    width: '100%',
+                    padding: '0.75rem',
+                    borderRadius: '0.5rem',
+                    border: `1px solid ${errors.firstName ? '#f44336' : '#ddd'}`,
+                    fontSize: '1rem'
                   }}
                 />
                 {errors.firstName && (
-                  <p className="error-message" style={{ color: 'var(--error)', marginTop: '0.5rem' }}>
+                  <p style={{ color: '#f44336', marginTop: '0.5rem', fontSize: '0.875rem' }}>
                     {errors.firstName}
                   </p>
                 )}
@@ -183,11 +239,15 @@ const Adoption = () => {
                   value={formData.lastName}
                   onChange={handleChange}
                   style={{
-                    borderColor: errors.lastName ? 'var(--error)' : 'var(--gray-300)'
+                    width: '100%',
+                    padding: '0.75rem',
+                    borderRadius: '0.5rem',
+                    border: `1px solid ${errors.lastName ? '#f44336' : '#ddd'}`,
+                    fontSize: '1rem'
                   }}
                 />
                 {errors.lastName && (
-                  <p className="error-message" style={{ color: 'var(--error)', marginTop: '0.5rem' }}>
+                  <p style={{ color: '#f44336', marginTop: '0.5rem', fontSize: '0.875rem' }}>
                     {errors.lastName}
                   </p>
                 )}
@@ -203,11 +263,15 @@ const Adoption = () => {
                 value={formData.email}
                 onChange={handleChange}
                 style={{
-                  borderColor: errors.email ? 'var(--error)' : 'var(--gray-300)'
+                  width: '100%',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: `1px solid ${errors.email ? '#f44336' : '#ddd'}`,
+                  fontSize: '1rem'
                 }}
               />
               {errors.email && (
-                <p className="error-message" style={{ color: 'var(--error)', marginTop: '0.5rem' }}>
+                <p style={{ color: '#f44336', marginTop: '0.5rem', fontSize: '0.875rem' }}>
                   {errors.email}
                 </p>
               )}
@@ -222,11 +286,15 @@ const Adoption = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 style={{
-                  borderColor: errors.phone ? 'var(--error)' : 'var(--gray-300)'
+                  width: '100%',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: `1px solid ${errors.phone ? '#f44336' : '#ddd'}`,
+                  fontSize: '1rem'
                 }}
               />
               {errors.phone && (
-                <p className="error-message" style={{ color: 'var(--error)', marginTop: '0.5rem' }}>
+                <p style={{ color: '#f44336', marginTop: '0.5rem', fontSize: '0.875rem' }}>
                   {errors.phone}
                 </p>
               )}
@@ -241,31 +309,44 @@ const Adoption = () => {
                 value={formData.address}
                 onChange={handleChange}
                 style={{
-                  borderColor: errors.address ? 'var(--error)' : 'var(--gray-300)'
+                  width: '100%',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: `1px solid ${errors.address ? '#f44336' : '#ddd'}`,
+                  fontSize: '1rem',
+                  resize: 'vertical'
                 }}
               />
               {errors.address && (
-                <p className="error-message" style={{ color: 'var(--error)', marginTop: '0.5rem' }}>
+                <p style={{ color: '#f44336', marginTop: '0.5rem', fontSize: '0.875rem' }}>
                   {errors.address}
                 </p>
               )}
             </div>
 
             <div className="form-group">
-              <label htmlFor="message">Why do you want to adopt this pet?</label>
+              <label htmlFor="message">Why do you want to adopt {selectedPet.name}?</label>
               <textarea
                 name="message"
                 id="message"
                 rows="4"
                 value={formData.message}
                 onChange={handleChange}
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid #ddd',
+                  fontSize: '1rem',
+                  resize: 'vertical'
+                }}
               />
             </div>
 
             {errors.submit && (
               <div style={{ 
-                color: 'var(--error)',
-                backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                color: '#f44336',
+                backgroundColor: 'rgba(244, 67, 54, 0.1)',
                 padding: '1rem',
                 borderRadius: '0.5rem',
                 marginBottom: '1rem'
@@ -277,15 +358,29 @@ const Adoption = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="btn btn-primary"
               style={{ 
                 width: '100%',
-                opacity: isSubmitting ? '0.7' : '1',
+                padding: '1rem',
+                fontSize: '1.1rem',
+                backgroundColor: isSubmitting ? '#ccc' : '#6c63ff',
+                color: 'white',
+                border: 'none',
+                borderRadius: '0.5rem',
                 cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                padding: '1rem'
+                transition: 'transform 0.2s ease'
+              }}
+              onMouseEnter={e => {
+                if (!isSubmitting) {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (!isSubmitting) {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }
               }}
             >
-              {isSubmitting ? 'Submitting...' : 'Submit Application'}
+              {isSubmitting ? 'Processing Adoption...' : 'Complete Adoption'}
             </button>
           </form>
         )}
