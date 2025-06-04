@@ -4,9 +4,9 @@ import Counter from '../components/Counter';
 
 const teamMembers = [
   {
-    name: 'John Smith',
+    name: 'Makhado Khashane',
     role: 'Founder & CEO',
-    image: '/assets/team/john.jpg',
+    image: '/assets/Micheal-Ndlovu.png',
     description: 'Passionate about connecting pets with loving homes.',
     social: {
       linkedin: '#',
@@ -16,7 +16,7 @@ const teamMembers = [
   {
     name: 'Sarah Johnson',
     role: 'Head of Adoptions',
-    image: '/assets/team/sarah.jpg',
+    image: '/assets/Joe-Zulu.png',
     description: 'Dedicated to ensuring perfect pet-family matches.',
     social: {
       linkedin: '#',
@@ -26,7 +26,7 @@ const teamMembers = [
   {
     name: 'Michael Chen',
     role: 'Veterinarian',
-    image: '/assets/dog-hero.png',
+    image: '/assets/David-Kallaway.png',
     description: 'Expert in pet health and well-being.',
     social: {
       linkedin: '#',

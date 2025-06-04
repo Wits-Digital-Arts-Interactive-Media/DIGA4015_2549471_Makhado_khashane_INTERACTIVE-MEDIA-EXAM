@@ -40,6 +40,12 @@ const Pets = () => {
     navigate(`/pets/${pet.id}`);
   };
 
+  const handleAdoptClick = (e, pet) => {
+    e.stopPropagation();
+    setSelectedPet(pet);
+    navigate('/adoption');
+  };
+
   const handleRefresh = async () => {
     await refreshPets();
     setShowFavoritesOnly(false); // Reset favorites filter on refresh
@@ -339,11 +345,7 @@ const Pets = () => {
                     e.currentTarget.style.background = 'linear-gradient(to right, #6c63ff, #4b47d6)';
                     e.currentTarget.style.animation = 'none';
                   }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedPet(pet);
-                    navigate('/adoption');
-                  }}
+                  onClick={(e) => handleAdoptClick(e, pet)}
                 >
                   <span style={{ fontSize: '1.3rem' }}>🐾</span>
                   <span>Adopt {pet.name}</span>
