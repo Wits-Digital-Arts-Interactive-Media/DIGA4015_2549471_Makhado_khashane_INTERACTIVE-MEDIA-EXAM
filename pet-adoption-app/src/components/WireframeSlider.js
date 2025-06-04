@@ -103,7 +103,7 @@ const WireframeSlider = () => {
         <div style={{
           position: 'relative',
           width: '100%',
-          height: '400px',
+          height: '600px',
           overflow: 'hidden',
           borderRadius: '0.5rem',
           backgroundColor: 'rgba(108, 99, 255, 0.1)',
@@ -136,7 +136,7 @@ const WireframeSlider = () => {
                   alt={frame.title}
                   style={{
                     maxWidth: '100%',
-                    maxHeight: '300px',
+            maxHeight: '500px',
                     objectFit: 'contain',
                     marginBottom: '1rem',
                     filter: showChanges ? 'blur(3px)' : 'none',
@@ -218,23 +218,49 @@ const WireframeSlider = () => {
                   </div>
                 )}
 
-                <div style={{
-                  opacity: showText && !showChanges ? 1 : 0,
-                  visibility: showText && !showChanges ? 'visible' : 'hidden',
-                  transition: 'opacity 0.3s ease, visibility 0.3s ease',
-                  position: 'absolute',
-                  bottom: '2rem',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  textAlign: 'center',
-                  backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                  padding: '1rem',
-                  borderRadius: '0.5rem',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                  width: '80%'
-                }}>
+                <div 
+                  onClick={() => setShowText(!showText)}
+                  style={{
+                    opacity: showText && !showChanges ? 1 : 0,
+                    visibility: showText && !showChanges ? 'visible' : 'hidden',
+                    transition: 'all 0.3s ease',
+                    position: 'absolute',
+                    bottom: '2rem',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    textAlign: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    padding: '1rem',
+                    borderRadius: '0.5rem',
+                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                    width: '80%',
+                    cursor: 'pointer',
+                    border: '1px solid rgba(75, 71, 214, 0.2)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                    e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)';
+                    e.currentTarget.style.transform = 'translateX(-50%) translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                    e.currentTarget.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+                    e.currentTarget.style.transform = 'translateX(-50%)';
+                  }}
+                >
                   <h3 style={{ color: '#4b47d6', marginBottom: '0.5rem' }}>{frame.title}</h3>
-                  <p style={{ color: '#2d3436' }}>{frame.description}</p>
+                  <p style={{ color: '#2d3436', marginBottom: '0.5rem' }}>{frame.description}</p>
+                  <span style={{ 
+                    color: '#4b47d6',
+                    fontSize: '0.8rem',
+                    opacity: 0.7,
+                    display: 'block',
+                    marginTop: '0.5rem',
+                    borderTop: '1px solid rgba(75, 71, 214, 0.1)',
+                    paddingTop: '0.5rem'
+                  }}>
+                    Click to toggle
+                  </span>
                 </div>
               </div>
             ))}

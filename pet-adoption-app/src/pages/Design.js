@@ -313,37 +313,64 @@ const Design = () => {
         <div>
           <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Target Audience</h3>
           <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436', marginBottom: '2rem' }}>
-            <li style={{ marginBottom: '0.5rem' }}>• Dog Enthusiasts who enjoy spotting and learning about unique breeds</li>
-            <li style={{ marginBottom: '0.5rem' }}>• Pet Businesses that want to engage with customers through rewards</li>
-            <li style={{ marginBottom: '0.5rem' }}>• Animal Researchers who benefit from crowdsourced rare dog data</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Potential Pet Parents looking to adopt their perfect companion</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Animal Shelters seeking to connect pets with loving homes</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Pet Lovers interested in supporting animal welfare</li>
           </ul>
 
           <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Personas</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
             {[
               {
-                name: "Thabo",
-                role: "Dog Lover",
-                age: "28",
-                occupation: "Graphic Designer",
-                painPoints: "Loves discovering rare dog breeds but has no platform to share his findings",
-                goals: "Wants to upload photos, learn about different breeds, and earn rewards"
+                name: "Sarah Chen",
+                role: "Young Professional",
+                age: "29",
+                occupation: "Marketing Manager",
+                painPoints: [
+                  "Limited time to visit multiple shelters. ",
+                  " Anxious about first-time pet ownership",
+                  "Needs guidance on pet selection and care"
+                ],
+                goals: [
+                  "Find a pet that fits her apartment lifestyle",
+                  "Understand the full commitment of pet ownership",
+                  "Connect with experienced pet owners for advice"
+                ],
+                background: "Lives alone in a pet-friendly apartment, works long hours but wants a companion"
               },
               {
-                name: "Sarah",
-                role: "Pet Store Owner",
-                age: "35",
-                occupation: "Business Owner",
-                painPoints: "Struggles to attract and retain customers in a competitive market",
-                goals: "Wants to offer discounts to engaged users and increase store traffic"
+                name: "David & Emma Thompson",
+                role: "Family with Children",
+                age: "34 & 36",
+                occupation: "Teacher & Healthcare Worker",
+                painPoints: [
+                  "Need a child-friendly pet",
+                  "Concerned about pet behavior with kids",
+                  "Want transparent health history"
+                ],
+                goals: [
+                  "Adopt a gentle, family-friendly pet",
+                  "Teach children about pet responsibility",
+                  "Find a pet that can grow with the family"
+                ],
+                background: "Parents of two young children (ages 5 and 7), own their home with a fenced yard"
               },
               {
-                name: "Lerato",
-                role: "Stray Dog Rescuer",
-                age: "31",
-                occupation: "Community Volunteer",
-                painPoints: "Struggles to report and track stray dogs efficiently",
-                goals: "Wants a simple way to scan, identify, and report stray dogs to nearby shelters"
+                name: "Margaret Wilson",
+                role: "Senior Adopter",
+                age: "68",
+                occupation: "Retired Teacher",
+                painPoints: [
+                  "Physical limitations in pet care",
+                  "Fixed income considerations",
+                  "Worried about long-term commitment"
+                ],
+                goals: [
+                  "Find a calm, low-maintenance companion",
+                  "Connect with pet support services",
+                  "Understand senior-specific adoption programs"
+                ],
+                background: "Recently widowed, lives independently, experienced previous pet owner"
               }
             ].map((persona, index) => (
               <div key={index} style={{
@@ -437,7 +464,7 @@ const Design = () => {
             {
               week: "Week 4",
               title: "State Management & Integration",
-              tasks: ["Context API setup", "Image upload logic", "AI integration"]
+              tasks: ["Context API setup", "Pet Adoption logic", "Leaderboard integration"]
             },
             {
               week: "Week 5",
@@ -626,11 +653,12 @@ const Design = () => {
         <div style={{ marginBottom: '2rem' }}>
           <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Sitemap</h3>
           <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
-            <li style={{ marginBottom: '0.5rem' }}>• Home</li>
-            <li style={{ marginBottom: '0.5rem' }}>• Dog Spotting Map</li>
-            <li style={{ marginBottom: '0.5rem' }}>• Upload Rare Dog (Photo & Details Submission)</li>
-            <li style={{ marginBottom: '0.5rem' }}>• Leaderboard & Rewards Dashboard</li>
-            <li style={{ marginBottom: '0.5rem' }}>• Settings (Notifications, Preferences)</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Home (Featured Pets, Success Stories)</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Available Pets (Search, Filter, Browse)</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Adoption Process (Steps, Requirements)</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Pet Care Resources (Guides, Tips)</li>
+            <li style={{ marginBottom: '0.5rem' }}>• About Us (Mission, Team, Partners)</li>
+            <li style={{ marginBottom: '0.5rem' }}>• My Account (Applications, Favorites)</li>
           </ul>
         </div>
 
@@ -642,10 +670,17 @@ const Design = () => {
             borderRadius: '0.75rem',
             border: '1px solid rgba(108, 99, 255, 0.2)'
           }}>
+            <h4 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Primary Adoption Flow:</h4>
             <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
-              <li style={{ marginBottom: '0.5rem' }}>1. User opens the app → Views rare dog map → Uploads a spotted dog.</li>
-              <li style={{ marginBottom: '0.5rem' }}>2. User gains points for each verified upload → Competes on leaderboard.</li>
-              <li style={{ marginBottom: '0.5rem' }}>3. User redeems points for pet-related rewards (discounts, free treats, etc.).</li>
+              <li style={{ marginBottom: '0.5rem' }}>1. Browse Available Pets → Filter by preferences → View detailed profiles</li>
+              <li style={{ marginBottom: '0.5rem' }}>2. Save favorites → Complete adoption questionnaire → Schedule meet & greet</li>
+              <li style={{ marginBottom: '0.5rem' }}>3. Submit application → Complete home check → Finalize adoption</li>
+            </ul>
+
+            <h4 style={{ color: '#4b47d6', margin: '1rem 0' }}>Secondary Flows:</h4>
+            <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
+              <li style={{ marginBottom: '0.5rem' }}>• Resource Access: Browse care guides → Save relevant information → Set reminders</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Post-Adoption: Access support resources → Share success story → Connect with community</li>
             </ul>
           </div>
         </div>
@@ -776,23 +811,23 @@ const Design = () => {
         
         <div style={{ marginBottom: '2rem' }}>
           <p style={{ color: '#2d3436', lineHeight: '1.6' }}>
-            The PetScanning platform identifies rare dog breeds and allows users to report sightings to local shelters. Users earn points for a national leaderboard and can engage with virtual pets, creating a tool that's both fun and socially responsible.
+            Our pet adoption platform connects loving homes with pets in need, making the adoption process simple and rewarding. Through detailed pet profiles, adoption guidance, and post-adoption support, we ensure successful matches between pets and their new families.
           </p>
         </div>
 
         <div style={{ marginBottom: '2rem' }}>
-          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>What Works Well</h3>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Key Features</h3>
           <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
-            <li style={{ marginBottom: '0.5rem' }}>• Gamified Interaction with Real-World Outcomes</li>
-            <li style={{ marginBottom: '0.5rem' }}>• Shelter Collaboration and User Contribution</li>
-            <li style={{ marginBottom: '0.5rem' }}>• Educational Play through Virtual Pet Care</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Comprehensive Pet Profiles with Detailed Information</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Streamlined Adoption Application Process</li>
+            <li style={{ marginBottom: '0.5rem' }}>• Post-Adoption Support and Resources</li>
           </ul>
         </div>
 
         <div>
-          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Visual Inspiration: Mr D</h3>
+          <h3 style={{ color: '#4b47d6', marginBottom: '1rem' }}>Design Philosophy</h3>
           <p style={{ color: '#2d3436', lineHeight: '1.6' }}>
-            Inspired by Mr D's website design approach, particularly their use of animated vector illustrations and playful transitions while maintaining a clean layout structure.
+            Our design focuses on creating an emotional connection while maintaining professionalism. We use warm colors, friendly typography, and clear navigation to make the adoption journey both heartwarming and efficient.
           </p>
         </div>
       </div>
