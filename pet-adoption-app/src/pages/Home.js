@@ -41,6 +41,8 @@ const Home = () => {
                 animation: 'float 3s ease-in-out infinite',
                 display: 'block',
                 margin: '0 auto'
+                
+
               }} 
             />
           </div>

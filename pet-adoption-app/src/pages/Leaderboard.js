@@ -19,7 +19,7 @@ const Leaderboard = () => {
       location: "Johannesburg, SA",
       adoptions: 38,
       badge: "🥈",
-      image: "https://i.pravatar.cc/150?img=2",
+      image: "https://i.pravatar.cc/150?img=64",
       impact: "Saved 38 lives",
       trend: "up"
     },
@@ -29,16 +29,16 @@ const Leaderboard = () => {
       location: "Durban, SA",
       adoptions: 35,
       badge: "🥉",
-      image: "https://i.pravatar.cc/150?img=3",
+      image: "https://i.pravatar.cc/150?img=21",
       impact: "Saved 35 lives",
       trend: "down"
     },
     {
       rank: 4,
-      name: "David Molefe",
+      name: "David Yung",
       location: "Pretoria, SA",
       adoptions: 31,
-      image: "https://i.pravatar.cc/150?img=4",
+      image: "https://i.pravatar.cc/150?img=33",
       impact: "Saved 31 lives",
       trend: "up"
     },
@@ -62,7 +62,7 @@ const Leaderboard = () => {
     },
     {
       rank: 7,
-      name: "Thabo Mbeki",
+      name: "Thabo Rivete",
       location: "East London, SA",
       adoptions: 25,
       image: "https://i.pravatar.cc/150?img=7",
@@ -74,7 +74,7 @@ const Leaderboard = () => {
       name: "Grace Naidoo",
       location: "Kimberley, SA",
       adoptions: 23,
-      image: "https://i.pravatar.cc/150?img=8",
+      image: "https://i.pravatar.cc/150?img=23",
       impact: "Saved 23 lives",
       trend: "down"
     },
@@ -83,13 +83,13 @@ const Leaderboard = () => {
       name: "Peter van Wyk",
       location: "Nelspruit, SA",
       adoptions: 21,
-      image: "https://i.pravatar.cc/150?img=9",
+      image: "https://i.pravatar.cc/150?img=17",
       impact: "Saved 21 lives",
       trend: "up"
     },
     {
       rank: 10,
-      name: "Nomvula Khumalo",
+      name: "Karlie Morgan",
       location: "Polokwane, SA",
       adoptions: 19,
       image: "https://i.pravatar.cc/150?img=10",
@@ -110,7 +110,7 @@ const Leaderboard = () => {
       name: "Zandile Dlamini",
       location: "Rustenburg, SA",
       adoptions: 15,
-      image: "https://i.pravatar.cc/150?img=12",
+      image: "https://i.pravatar.cc/150?img=35",
       impact: "Saved 15 lives",
       trend: "down"
     }

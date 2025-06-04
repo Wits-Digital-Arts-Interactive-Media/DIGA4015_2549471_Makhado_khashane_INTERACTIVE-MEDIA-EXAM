@@ -190,29 +190,33 @@ const Design = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
             {[
               {
-                name: "Thabo",
-                role: "Dog Lover",
-                age: "28",
-                occupation: "Graphic Designer",
-                painPoints: "Loves discovering rare dog breeds but has no platform to share his findings",
-                goals: "Wants to upload photos, learn about different breeds, and earn rewards"
-              },
-              {
-                name: "Sarah",
-                role: "Pet Store Owner",
-                age: "35",
-                occupation: "Business Owner",
-                painPoints: "Struggles to attract and retain customers in a competitive market",
-                goals: "Wants to offer discounts to engaged users and increase store traffic"
-              },
-              {
-                name: "Lerato",
-                role: "Stray Dog Rescuer",
-                age: "31",
-                occupation: "Community Volunteer",
-                painPoints: "Struggles to report and track stray dogs efficiently",
-                goals: "Wants a simple way to scan, identify, and report stray dogs to nearby shelters"
-              }
+                  name: "Thabo",
+                  role: "Dog Lover",
+                  age: "28",
+                  occupation: "Graphic Designer",
+                  painPoints: "Loves discovering rare dog breeds but has no platform to share his findings",
+                  goals: "Wants to upload photos, learn about different breeds, and earn rewards",
+                  accessibilityNeeds: "Occasionally works in low-connectivity areas, so offline browsing would help"
+                },
+                {
+                  name: "Sarah",
+                  role: "Pet Store Owner",
+                  age: "35",
+                  occupation: "Business Owner",
+                  painPoints: "Struggles to attract and retain customers in a competitive market",
+                  goals: "Wants to offer discounts to engaged users and increase store traffic",
+                  accessibilityNeeds: "Needs a simple, easy-to-navigate interface due to limited tech skills"
+                },
+                {
+                  name: "Lerato",
+                  role: "Stray Dog Rescuer",
+                  age: "31",
+                  occupation: "Community Volunteer",
+                  painPoints: "Struggles to report and track stray dogs efficiently",
+                  goals: "Wants a simple way to scan, identify, and report stray dogs to nearby shelters",
+                  accessibilityNeeds: "Often works in outdoor environments without reliable data, so offline functionality is key"
+                }
+
             ].map((persona, index) => (
               <div key={index} style={{
                 padding: '1.5rem',
