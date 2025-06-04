@@ -327,16 +327,23 @@ const Design = () => {
                 age: "29",
                 occupation: "Marketing Manager",
                 painPoints: [
-                  "Limited time to visit multiple shelters. ",
-                  " Anxious about first-time pet ownership",
-                  "Needs guidance on pet selection and care"
+                  "Limited time to visit multiple shelters",
+                  "Anxious about first-time pet ownership",
+                  "Needs guidance on pet selection and care",
+                  "Often travels to areas with poor internet connectivity"
                 ],
                 goals: [
                   "Find a pet that fits her apartment lifestyle",
                   "Understand the full commitment of pet ownership",
-                  "Connect with experienced pet owners for advice"
+                  "Connect with experienced pet owners for advice",
+                  "Access pet information offline during shelter visits"
                 ],
-                background: "Lives alone in a pet-friendly apartment, works long hours but wants a companion"
+                background: "Lives alone in a pet-friendly apartment, works long hours but wants a companion",
+                scenarios: [
+                  "Browsing pets during commute with intermittent internet",
+                  "Saving pet profiles for offline viewing at rural shelters",
+                  "Completing adoption forms in advance of shelter visits"
+                ]
               },
               {
                 name: "David & Emma Thompson",
@@ -356,6 +363,30 @@ const Design = () => {
                 background: "Parents of two young children (ages 5 and 7), own their home with a fenced yard"
               },
               {
+                name: "Michael Torres",
+                role: "Tech Professional with Visual Impairment",
+                age: "42",
+                occupation: "Software Developer",
+                painPoints: [
+                  "Needs screen reader compatible pet descriptions",
+                  "Difficulty with image-heavy interfaces",
+                  "Requires clear, structured navigation",
+                  "Wants detailed audio descriptions of pets"
+                ],
+                goals: [
+                  "Find a pet suitable for his lifestyle",
+                  "Access comprehensive pet information via screen reader",
+                  "Navigate the adoption process independently",
+                  "Connect with support for visually impaired pet owners"
+                ],
+                background: "Experienced with assistive technologies, lives in urban area, works remotely",
+                scenarios: [
+                  "Using screen reader to browse pet profiles",
+                  "Accessing voice-guided navigation for shelter visits",
+                  "Using keyboard shortcuts for efficient browsing"
+                ]
+              },
+              {
                 name: "Margaret Wilson",
                 role: "Senior Adopter",
                 age: "68",
@@ -363,14 +394,21 @@ const Design = () => {
                 painPoints: [
                   "Physical limitations in pet care",
                   "Fixed income considerations",
-                  "Worried about long-term commitment"
+                  "Worried about long-term commitment",
+                  "Needs larger text and simple navigation"
                 ],
                 goals: [
                   "Find a calm, low-maintenance companion",
                   "Connect with pet support services",
-                  "Understand senior-specific adoption programs"
+                  "Understand senior-specific adoption programs",
+                  "Access easy-to-read pet care information"
                 ],
-                background: "Recently widowed, lives independently, experienced previous pet owner"
+                background: "Recently widowed, lives independently, experienced previous pet owner",
+                scenarios: [
+                  "Using high-contrast mode for better readability",
+                  "Accessing simplified navigation options",
+                  "Connecting with senior-specific support services"
+                ]
               }
             ].map((persona, index) => (
               <div key={index} style={{
@@ -379,11 +417,52 @@ const Design = () => {
                 borderRadius: '0.75rem',
                 border: '1px solid rgba(108, 99, 255, 0.2)'
               }}>
-                <h4 style={{ color: '#4b47d6', marginBottom: '0.5rem' }}>{persona.name} ({persona.role})</h4>
-                <p style={{ marginBottom: '0.5rem', color: '#2d3436' }}><strong>Age:</strong> {persona.age}</p>
-                <p style={{ marginBottom: '0.5rem', color: '#2d3436' }}><strong>Occupation:</strong> {persona.occupation}</p>
-                <p style={{ marginBottom: '0.5rem', color: '#2d3436' }}><strong>Pain Points:</strong> {persona.painPoints}</p>
-                <p style={{ color: '#2d3436' }}><strong>Goals:</strong> {persona.goals}</p>
+                <h4 style={{ color: '#4b47d6', marginBottom: '1rem' }}>{persona.name} ({persona.role})</h4>
+                
+                <div style={{ marginBottom: '1rem' }}>
+                  <p style={{ color: '#2d3436', fontWeight: '600', marginBottom: '0.5rem' }}>Age:</p>
+                  <p style={{ color: '#2d3436', marginLeft: '1rem' }}>{persona.age}</p>
+                </div>
+
+                <div style={{ marginBottom: '1rem' }}>
+                  <p style={{ color: '#2d3436', fontWeight: '600', marginBottom: '0.5rem' }}>Occupation:</p>
+                  <p style={{ color: '#2d3436', marginLeft: '1rem' }}>{persona.occupation}</p>
+                </div>
+
+                <div style={{ marginBottom: '1rem' }}>
+                  <p style={{ color: '#2d3436', fontWeight: '600', marginBottom: '0.5rem' }}>Pain Points:</p>
+                  <p style={{ 
+                    color: '#2d3436', 
+                    marginLeft: '1rem',
+                    lineHeight: '1.5'
+                  }}>
+                    {persona.painPoints.join('. ')}
+                  </p>
+                </div>
+
+                <div style={{ marginBottom: '1rem' }}>
+                  <p style={{ color: '#2d3436', fontWeight: '600', marginBottom: '0.5rem' }}>Goals:</p>
+                  <p style={{ 
+                    color: '#2d3436', 
+                    marginLeft: '1rem',
+                    lineHeight: '1.5'
+                  }}>
+                    {persona.goals.join('. ')}
+                  </p>
+                </div>
+
+                {persona.scenarios && (
+                  <div>
+                    <p style={{ color: '#2d3436', fontWeight: '600', marginBottom: '0.5rem' }}>Scenarios:</p>
+                    <p style={{ 
+                      color: '#2d3436', 
+                      marginLeft: '1rem',
+                      lineHeight: '1.5'
+                    }}>
+                      {persona.scenarios.join('. ')}
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -445,37 +524,61 @@ const Design = () => {
       }}>
         <h2 style={{ color: '#4b47d6', marginBottom: '1.5rem', fontSize: '2rem' }}>Development Timeline</h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
-          {[
-            {
-              week: "Week 1",
-              title: "Research & Wireframing",
-              tasks: ["User research and personas", "User journey mapping", "Core page wireframes"]
-            },
-            {
-              week: "Week 2",
-              title: "UI Design & Prototyping",
-              tasks: ["Style guide creation", "High-fidelity mockups", "Interactive prototyping"]
-            },
-            {
-              week: "Week 3",
-              title: "React Setup & Routing",
-              tasks: ["Project initialization", "Folder structure setup", "Route implementation"]
-            },
-            {
-              week: "Week 4",
-              title: "State Management & Integration",
-              tasks: ["Context API setup", "Pet Adoption logic", "Leaderboard integration"]
-            },
-            {
-              week: "Week 5",
-              title: "Testing & Debugging",
-              tasks: ["Unit testing", "Integration testing", "Performance optimization"]
-            },
-            {
-              week: "Week 6",
-              title: "Final Touches",
-              tasks: ["Polish and feedback", "Documentation", "Final presentation"]
-            }
+            {[
+              {
+                week: "Week 1",
+                title: "Research & Planning",
+                tasks: [
+                  "User research with potential adopters",
+                  "Shelter partnership planning",
+                  "Core feature mapping"
+                ]
+              },
+              {
+                week: "Week 2",
+                title: "UI Design & User Flow",
+                tasks: [
+                  "Pet profile card design",
+                  "Adoption process wireframes",
+                  "Gamification elements design"
+                ]
+              },
+              {
+                week: "Week 3",
+                title: "Core Features Development",
+                tasks: [
+                  "Pet browsing and filtering system",
+                  "Favorite pets functionality",
+                  "Achievement system setup"
+                ]
+              },
+              {
+                week: "Week 4",
+                title: "Adoption Process Implementation",
+                tasks: [
+                  "Application form development",
+                  "Progress tracking system",
+                  "Email notification setup"
+                ]
+              },
+              {
+                week: "Week 5",
+                title: "Gamification Integration",
+                tasks: [
+                  "Points system implementation",
+                  "Badges and rewards setup",
+                  "Leaderboard development"
+                ]
+              },
+              {
+                week: "Week 6",
+                title: "Refinement & Launch",
+                tasks: [
+                  "User feedback integration",
+                  "Performance optimization",
+                  "Platform launch preparation"
+                ]
+              }
           ].map((week, index) => (
             <div key={index} style={{
               padding: '1.5rem',
@@ -681,6 +784,13 @@ const Design = () => {
             <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
               <li style={{ marginBottom: '0.5rem' }}>• Resource Access: Browse care guides → Save relevant information → Set reminders</li>
               <li style={{ marginBottom: '0.5rem' }}>• Post-Adoption: Access support resources → Share success story → Connect with community</li>
+            </ul>
+
+            <h4 style={{ color: '#4b47d6', margin: '1rem 0' }}>Accessibility Flows:</h4>
+            <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
+              <li style={{ marginBottom: '0.5rem' }}>• Screen Reader: Navigate via landmarks → Access detailed descriptions → Use keyboard shortcuts</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Offline Mode: Download pet profiles → Cache search results → Submit forms when online</li>
+              <li style={{ marginBottom: '0.5rem' }}>• Adaptive View: Toggle text size → Switch contrast modes → Enable voice navigation</li>
             </ul>
           </div>
         </div>

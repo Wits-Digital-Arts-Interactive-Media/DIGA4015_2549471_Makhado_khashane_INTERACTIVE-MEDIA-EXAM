@@ -21,8 +21,8 @@ const WireframeSlider = () => {
     {
       id: 2,
       image: '/wireframes/wireframe2.png',
-      title: 'Pet Details Page',
-      description: 'Detailed view of individual pet profiles',
+      title: 'Pet Capture Page',
+      description: 'Camera Toggle to Capture Pets',
       changes: [
         'Enhanced image gallery with smooth transitions',
         'Added favorite button with animation feedback',
@@ -33,8 +33,8 @@ const WireframeSlider = () => {
     {
       id: 3,
       image: '/wireframes/wireframe3.png',
-      title: 'Adoption Flow',
-      description: 'Step-by-step process for pet adoption',
+      title: 'User Leaderboard',
+      description: 'Capture Leaderboard',
       changes: [
         'Simplified form layout for better user experience',
         'Added progress indicators for multi-step process',
@@ -44,7 +44,33 @@ const WireframeSlider = () => {
     },
     {
       id: 4,
-      image: '/wireframes/wireframe4.png',
+      image: '/wireframes/wireframe5.png',
+      title: 'User Dashboard',
+      description: 'Personal space for managing adoptions and favorites',
+      changes: [
+        'Added dynamic data visualization elements',
+        'Implemented card-based layout for better organization',
+        'Enhanced notification system with animations',
+        'Added quick action buttons for common tasks'
+      ]
+    },
+
+     {
+      id: 5,
+      image: '/wireframes/wireframe6.png',
+      title: 'User Dashboard',
+      description: 'Personal space for managing adoptions and favorites',
+      changes: [
+        'Added dynamic data visualization elements',
+        'Implemented card-based layout for better organization',
+        'Enhanced notification system with animations',
+        'Added quick action buttons for common tasks'
+      ]
+    },
+    
+     {
+      id: 6,
+      image: '/wireframes/wireframe7.png',
       title: 'User Dashboard',
       description: 'Personal space for managing adoptions and favorites',
       changes: [
