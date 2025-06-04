@@ -340,7 +340,7 @@ const Design = () => {
               },
               {
                 name: "David & Emma Thompson",
-                role: "Family with Childen",
+                role: "Family with Children",
                 age: "34 & 36",
                 occupation: "Teacher & Healthcare Worker",
                 painPoints: [
