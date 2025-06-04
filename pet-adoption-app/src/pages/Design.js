@@ -778,20 +778,7 @@ const Design = () => {
               <li style={{ marginBottom: '0.5rem' }}>1. Browse Available Pets → Filter by preferences → View detailed profiles</li>
               <li style={{ marginBottom: '0.5rem' }}>2. Save favorites → Complete adoption questionnaire → Schedule meet & greet</li>
               <li style={{ marginBottom: '0.5rem' }}>3. Submit application → Complete home check → Finalize adoption</li>
-            </ul>
-
-            <h4 style={{ color: '#4b47d6', margin: '1rem 0' }}>Secondary Flows:</h4>
-            <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
-              <li style={{ marginBottom: '0.5rem' }}>• Resource Access: Browse care guides → Save relevant information → Set reminders</li>
-              <li style={{ marginBottom: '0.5rem' }}>• Post-Adoption: Access support resources → Share success story → Connect with community</li>
-            </ul>
-
-            <h4 style={{ color: '#4b47d6', margin: '1rem 0' }}>Accessibility Flows:</h4>
-            <ul style={{ listStyle: 'none', padding: 0, color: '#2d3436' }}>
-              <li style={{ marginBottom: '0.5rem' }}>• Screen Reader: Navigate via landmarks → Access detailed descriptions → Use keyboard shortcuts</li>
-              <li style={{ marginBottom: '0.5rem' }}>• Offline Mode: Download pet profiles → Cache search results → Submit forms when online</li>
-              <li style={{ marginBottom: '0.5rem' }}>• Adaptive View: Toggle text size → Switch contrast modes → Enable voice navigation</li>
-            </ul>
+            </ul>          
           </div>
         </div>
       </div>
