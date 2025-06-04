@@ -3,46 +3,69 @@ import React, { useState } from 'react';
 const WireframeSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showText, setShowText] = useState(true);
+  const [showChanges, setShowChanges] = useState(false);
 
   const wireframes = [
     {
       id: 1,
       image: '/wireframes/wireframe1.png',
       title: 'Homepage Wireframe',
-      description: 'Initial layout design for the main landing page'
+      description: 'Initial layout design for the main landing page',
+      changes: [
+        'Added gradient animations to enhance visual appeal',
+        'Implemented floating animation for the hero image',
+        'Increased text contrast for better readability',
+        'Added interactive elements to improve engagement'
+      ]
     },
     {
       id: 2,
       image: '/wireframes/wireframe2.png',
       title: 'Pet Details Page',
-      description: 'Detailed view of individual pet profiles'
+      description: 'Detailed view of individual pet profiles',
+      changes: [
+        'Enhanced image gallery with smooth transitions',
+        'Added favorite button with animation feedback',
+        'Implemented progress bar for adoption status',
+        'Improved information hierarchy for better scanning'
+      ]
     },
     {
       id: 3,
       image: '/wireframes/wireframe3.png',
       title: 'Adoption Flow',
-      description: 'Step-by-step process for pet adoption'
+      description: 'Step-by-step process for pet adoption',
+      changes: [
+        'Simplified form layout for better user experience',
+        'Added progress indicators for multi-step process',
+        'Implemented real-time validation feedback',
+        'Enhanced confirmation messages with animations'
+      ]
     },
     {
       id: 4,
       image: '/wireframes/wireframe4.png',
       title: 'User Dashboard',
-      description: 'Personal space for managing adoptions and favorites'
+      description: 'Personal space for managing adoptions and favorites',
+      changes: [
+        'Added dynamic data visualization elements',
+        'Implemented card-based layout for better organization',
+        'Enhanced notification system with animations',
+        'Added quick action buttons for common tasks'
+      ]
     }
   ];
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % wireframes.length);
-    setShowText(true); // Reset text visibility on slide change
+    setShowText(true);
+    setShowChanges(false);
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + wireframes.length) % wireframes.length);
-    setShowText(true); // Reset text visibility on slide change
-  };
-
-  const toggleText = () => {
-    setShowText(prev => !prev);
+    setShowText(true);
+    setShowChanges(false);
   };
 
   return (
@@ -55,6 +78,19 @@ const WireframeSlider = () => {
       backdropFilter: 'blur(10px)',
       border: '1px solid rgba(255, 255, 255, 0.2)'
     }}>
+      <style>
+        {`
+          @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(108, 99, 255, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(108, 99, 255, 0); }
+          }
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -48%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+          }
+        `}
+      </style>
       <h2 style={{ 
         color: '#4b47d6', 
         marginBottom: '1.5rem', 
@@ -92,10 +128,8 @@ const WireframeSlider = () => {
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  cursor: 'pointer',
                   position: 'relative'
                 }}
-                onClick={toggleText}
               >
                 <img
                   src={frame.image}
@@ -104,12 +138,89 @@ const WireframeSlider = () => {
                     maxWidth: '100%',
                     maxHeight: '300px',
                     objectFit: 'contain',
-                    marginBottom: '1rem'
+                    marginBottom: '1rem',
+                    filter: showChanges ? 'blur(3px)' : 'none',
+                    transition: 'filter 0.3s ease'
                   }}
                 />
+                
+                {/* Info Button */}
+                <button
+                  onClick={() => setShowChanges(!showChanges)}
+                  style={{
+                    position: 'absolute',
+                    top: '1rem',
+                    right: '1rem',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    backgroundColor: showChanges ? '#4b47d6' : 'white',
+                    color: showChanges ? 'white' : '#4b47d6',
+                    border: '2px solid #4b47d6',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.2rem',
+                    fontWeight: 'bold',
+                    animation: 'pulse 2s infinite',
+                    zIndex: 3,
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  i
+                </button>
+
+                {/* Changes Panel */}
+                {showChanges && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    backgroundColor: 'white',
+                    padding: '2rem',
+                    borderRadius: '1rem',
+                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+                    width: '80%',
+                    maxWidth: '500px',
+                    zIndex: 2,
+                    animation: 'fadeIn 0.3s ease'
+                  }}>
+                    <h3 style={{ 
+                      color: '#4b47d6', 
+                      marginBottom: '1rem',
+                      fontSize: '1.5rem'
+                    }}>
+                      Design Changes
+                    </h3>
+                    <ul style={{ 
+                      listStyle: 'none',
+                      padding: 0,
+                      margin: 0
+                    }}>
+                      {frame.changes.map((change, i) => (
+                        <li key={i} style={{
+                          marginBottom: '0.75rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          color: '#2d3436'
+                        }}>
+                          <span style={{
+                            color: '#4b47d6',
+                            fontWeight: 'bold'
+                          }}>•</span>
+                          {change}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 <div style={{
-                  opacity: showText ? 1 : 0,
-                  visibility: showText ? 'visible' : 'hidden',
+                  opacity: showText && !showChanges ? 1 : 0,
+                  visibility: showText && !showChanges ? 'visible' : 'hidden',
                   transition: 'opacity 0.3s ease, visibility 0.3s ease',
                   position: 'absolute',
                   bottom: '2rem',
@@ -188,7 +299,8 @@ const WireframeSlider = () => {
               key={index}
               onClick={() => {
                 setCurrentSlide(index);
-                setShowText(true); // Reset text visibility when changing slides
+                setShowText(true);
+                setShowChanges(false);
               }}
               style={{
                 width: '8px',

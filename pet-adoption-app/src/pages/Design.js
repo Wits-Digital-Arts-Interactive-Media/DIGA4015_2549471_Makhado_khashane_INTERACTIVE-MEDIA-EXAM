@@ -84,6 +84,7 @@ const Design = () => {
       }}>
         <h2 style={{ color: '#4b47d6', marginBottom: '1.5rem', fontSize: '2rem' }}>Components</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+          {/* Buttons Section */}
           <div>
             <h3 style={{ color: '#2d3436', marginBottom: '1rem' }}>Buttons</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -105,6 +106,8 @@ const Design = () => {
               }}>Secondary Button</button>
             </div>
           </div>
+
+          {/* Cards Section */}
           <div>
             <h3 style={{ color: '#2d3436', marginBottom: '1rem' }}>Cards</h3>
             <div style={{
@@ -115,6 +118,135 @@ const Design = () => {
             }}>
               <h4 style={{ color: '#4b47d6', marginBottom: '0.5rem' }}>Card Title</h4>
               <p style={{ color: '#2d3436' }}>Card content with a subtle background.</p>
+            </div>
+          </div>
+
+          {/* Icons Section */}
+          <div>
+            <h3 style={{ color: '#2d3436', marginBottom: '1rem' }}>Icons</h3>
+            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+              {/* Heart Icon */}
+              <div style={{
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#ff6b6b',
+                color: 'white',
+                borderRadius: '50%',
+                fontSize: '1.2rem'
+              }}>♥</div>
+
+              {/* Blue Check */}
+              <div style={{
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#6c63ff',
+                color: 'white',
+                borderRadius: '50%',
+                fontSize: '1.2rem'
+              }}>✓</div>
+
+              {/* Gold Medal */}
+              <div style={{
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#ffd700',
+                color: 'white',
+                borderRadius: '50%',
+                fontSize: '1.2rem',
+                boxShadow: '0 2px 8px rgba(255, 215, 0, 0.3)'
+              }}>🥇</div>
+
+              {/* Silver Medal */}
+              <div style={{
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#c0c0c0',
+                color: 'white',
+                borderRadius: '50%',
+                fontSize: '1.2rem',
+                boxShadow: '0 2px 8px rgba(192, 192, 192, 0.3)'
+              }}>🥈</div>
+
+              {/* Bronze Medal */}
+              <div style={{
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#cd7f32',
+                color: 'white',
+                borderRadius: '50%',
+                fontSize: '1.2rem',
+                boxShadow: '0 2px 8px rgba(205, 127, 50, 0.3)'
+              }}>🥉</div>
+            </div>
+          </div>
+
+          {/* Progress Bar */}
+          <div>
+            <h3 style={{ color: '#2d3436', marginBottom: '1rem' }}>Progress Bar</h3>
+            <div style={{
+              width: '100%',
+              height: '4px',
+              backgroundColor: 'rgba(108, 99, 255, 0.2)',
+              borderRadius: '2px',
+              overflow: 'hidden'
+            }}>
+              <div style={{
+                width: '60%',
+                height: '100%',
+                background: 'linear-gradient(to right, #6c63ff, #ff9f43)',
+                borderRadius: '2px'
+              }}></div>
+            </div>
+          </div>
+
+          {/* Scroll to Top Button */}
+          <div>
+            <h3 style={{ color: '#2d3436', marginBottom: '1rem' }}>Scroll to Top</h3>
+            <button style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              backgroundColor: '#6c63ff',
+              color: 'white',
+              border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1.2rem',
+              cursor: 'pointer',
+              boxShadow: '0 2px 8px rgba(108, 99, 255, 0.3)'
+            }}>↑</button>
+          </div>
+
+          {/* Vector Dog Image */}
+          <div>
+            <h3 style={{ color: '#2d3436', marginBottom: '1rem' }}>Vector Dog</h3>
+            <div style={{
+              width: '100px',
+              height: '100px',
+              backgroundColor: '#f8f9fa',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '2.5rem'
+            }}>
+              🐕
             </div>
           </div>
         </div>
@@ -190,33 +322,29 @@ const Design = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
             {[
               {
-                  name: "Thabo",
-                  role: "Dog Lover",
-                  age: "28",
-                  occupation: "Graphic Designer",
-                  painPoints: "Loves discovering rare dog breeds but has no platform to share his findings",
-                  goals: "Wants to upload photos, learn about different breeds, and earn rewards",
-                  accessibilityNeeds: "Occasionally works in low-connectivity areas, so offline browsing would help"
-                },
-                {
-                  name: "Sarah",
-                  role: "Pet Store Owner",
-                  age: "35",
-                  occupation: "Business Owner",
-                  painPoints: "Struggles to attract and retain customers in a competitive market",
-                  goals: "Wants to offer discounts to engaged users and increase store traffic",
-                  accessibilityNeeds: "Needs a simple, easy-to-navigate interface due to limited tech skills"
-                },
-                {
-                  name: "Lerato",
-                  role: "Stray Dog Rescuer",
-                  age: "31",
-                  occupation: "Community Volunteer",
-                  painPoints: "Struggles to report and track stray dogs efficiently",
-                  goals: "Wants a simple way to scan, identify, and report stray dogs to nearby shelters",
-                  accessibilityNeeds: "Often works in outdoor environments without reliable data, so offline functionality is key"
-                }
-
+                name: "Thabo",
+                role: "Dog Lover",
+                age: "28",
+                occupation: "Graphic Designer",
+                painPoints: "Loves discovering rare dog breeds but has no platform to share his findings",
+                goals: "Wants to upload photos, learn about different breeds, and earn rewards"
+              },
+              {
+                name: "Sarah",
+                role: "Pet Store Owner",
+                age: "35",
+                occupation: "Business Owner",
+                painPoints: "Struggles to attract and retain customers in a competitive market",
+                goals: "Wants to offer discounts to engaged users and increase store traffic"
+              },
+              {
+                name: "Lerato",
+                role: "Stray Dog Rescuer",
+                age: "31",
+                occupation: "Community Volunteer",
+                painPoints: "Struggles to report and track stray dogs efficiently",
+                goals: "Wants a simple way to scan, identify, and report stray dogs to nearby shelters"
+              }
             ].map((persona, index) => (
               <div key={index} style={{
                 padding: '1.5rem',

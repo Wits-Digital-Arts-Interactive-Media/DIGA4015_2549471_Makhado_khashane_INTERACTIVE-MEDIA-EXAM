@@ -33,18 +33,40 @@ const Home = () => {
       }}>
         <div className="hero-content" style={{ maxWidth: '800px', margin: '0 auto', position: 'relative' }}>
           <div style={{ marginBottom: '3rem', position: 'relative' }}>
-            <img 
-              src="/assets/dog-hero.png" 
-              alt="Happy dog illustration" 
-              style={{
-                width: '280px',
-                animation: 'float 3s ease-in-out infinite',
-                display: 'block',
-                margin: '0 auto'
-                
-
-              }} 
-            />
+            <div style={{
+              position: 'relative',
+              width: '280px',
+              margin: '0 auto',
+              animation: 'float 3s ease-in-out infinite'
+            }}>
+              <div style={{
+                padding: '10px',
+                borderRadius: '22px',
+                background: 'linear-gradient(135deg, #6c63ff, #4b47d6)',
+                animation: 'borderGlow 4s ease-in-out infinite',
+                transition: 'transform 0.3s ease'
+              }}>
+                <style>
+                  {`
+                    @keyframes borderGlow {
+                      0% { box-shadow: 0 0 20px rgba(108, 99, 255, 0.3); transform: scale(1); }
+                      50% { box-shadow: 0 0 35px rgba(108, 99, 255, 0.5); transform: scale(1.02); }
+                      100% { box-shadow: 0 0 20px rgba(108, 99, 255, 0.3); transform: scale(1); }
+                    }
+                  `}
+                </style>
+                <img 
+                  src="/assets/dog-hero.png" 
+                  alt="Happy dog illustration" 
+                  style={{
+                    width: '100%',
+                    display: 'block',
+                    borderRadius: '15px',
+                    backgroundColor: 'white'
+                  }} 
+                />
+              </div>
+            </div>
           </div>
           <h1 style={{ 
             fontSize: '4rem', 
